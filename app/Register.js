@@ -10,6 +10,7 @@ class Register extends Component {
     super()
     this.state = {
       register: {
+        accountId: '',
         username: '',
         mobile: '',
         email: '',
@@ -54,6 +55,10 @@ class Register extends Component {
   zeroFill ( number, width ) {
     width -= number.toString().length;
     return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+  }
+
+  accountIdChange(text) {
+    this.setState({ register: { ...this.state.register, accountId: text} })
   }
 
   usernameChange (text) {
@@ -115,6 +120,7 @@ class Register extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        accountId: register.accountId,
         username: register.username,
         password: register.password,
         mobile: register.mobile,
@@ -138,6 +144,16 @@ class Register extends Component {
           keyboardShouldPersistTaps='always'
           style={styles.content}>
           <Input
+            inputValue={register.accountId}
+            inputChange={(text)=>this.accountIdChange(text)}
+            label='帳號'
+            placeholder='請輸入使用者帳號' />
+          <Input
+            inputValue={register.email}
+            inputChange={(text)=>this.emailChange(text)}
+            label='E-mail'
+            placeholder='請輸入E-mail' />
+          <Input
             inputValue={register.username}
             inputChange={(text)=>this.usernameChange(text)}
             label='姓名'
@@ -147,11 +163,6 @@ class Register extends Component {
             inputChange={(text)=>this.mobileChange(text)}
             label='手機'
             placeholder='請輸入手機' />
-          <Input
-            inputValue={register.email}
-            inputChange={(text)=>this.emailChange(text)}
-            label='E-mail'
-            placeholder='請輸入E-mail' />
           <Input
             inputValue={register.password}
             inputChange={(text)=>this.passwordChange(text)}
