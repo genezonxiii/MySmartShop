@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import { View, ScrollView, StyleSheet, Alert } from 'react-native'
 import Button from './register/Button'
 import Input from './register/Input'
 
@@ -37,6 +37,26 @@ class Login extends Component {
 				email: login.username,
 			})
 		})
+		.then((response) => response.json())
+		.then((responseJson) => {
+			if(responseJson.accountId != '') {
+				this.setState({
+					login: {
+						username: '',
+						password: '',
+					}
+				})
+				this.navigate()
+			}
+	    })
+		.catch((error) => {
+	      	Alert.alert('登入失敗！');
+	    });
+	}
+
+	navigate () {
+		Alert.alert('登入成功!!')
+		this.props.navigation.navigate('Reister')
 	}
 
 	render () {

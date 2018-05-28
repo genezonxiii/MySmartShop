@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import { View, ScrollView, StyleSheet, Alert } from 'react-native'
 import Button from './register/Button'
 import Input from './register/Input'
 import ComboPicker from './register/Picker'
@@ -22,7 +22,7 @@ class Register extends Component {
         age: '',
         occupation: '',
         marriage: '',
-        numberofchildren: '',
+        numbersofchildren: '',
       },
       occupationList: [
         {label: '程式設計師', value: '01'},
@@ -105,8 +105,8 @@ class Register extends Component {
     this.setState({ register: { ...this.state.register, marriage: text } })
   }
 
-  numberofchildrenChange (text) {
-    this.setState({ register: { ...this.state.register, numberofchildren: text } })
+  numbersofchildrenChange (text) {
+    this.setState({ register: { ...this.state.register, numbersofchildren: text } })
   }
 
   registration () {
@@ -132,6 +132,34 @@ class Register extends Component {
         numbersofchildren: register.numbersofchildren
       })
     })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      if(responseJson.accountId != '') {
+        this.setState({
+          register: {
+            accountId: '',
+            username: '',
+            password: '',
+            mobile: '',
+            email: '',
+            birthdate: '',
+            age: '',
+            occupation: '',
+            marriage: '',
+            numbersofchildren: '',
+          }
+        })
+        this.navigate()
+      }
+    })
+    .catch((error) => {
+      Alert.alert('註冊失敗！');
+    });
+  }
+
+  navigate () {
+    Alert.alert('註冊成功!!')
+    this.props.navigation.navigate('Login')
   }
 
   render () {
@@ -192,7 +220,7 @@ class Register extends Component {
             label='婚姻' />
           <Input
             inputValue={register.numbersofchildren}
-            inputChange={(text)=>this.numberofchildrenChange(text)}
+            inputChange={(text)=>this.numbersofchildrenChange(text)}
             label='子女數'
             placeholder='請輸入子女數' />
           <ComboPicker
