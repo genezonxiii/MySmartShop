@@ -16,9 +16,10 @@ var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
 export default class Guide extends Component {
   constructor(props){
     super(props)
+    const { screenProps: { entrypointid } } = this.props
     this.state = {
       guide: [],
-      entrypointid: props.entrypointid,
+      entrypointid: entrypointid,
       idx: 0,
     }
     this.loadData = this.loadData.bind(this)

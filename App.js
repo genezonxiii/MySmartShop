@@ -23,9 +23,16 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  state = {
+    entrypointid: 1
+  }
   render() {
     return (
-      <Tabs />
+      <Tabs 
+        screenProps={{
+          entrypointid: this.state.entrypointid,
+        }}
+      />
     );
   }
 }
