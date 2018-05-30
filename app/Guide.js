@@ -1,115 +1,123 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image,
-  Alert,
-} from 'react-native';
-
-import Button from './register/Button';
+import React, { Component } from 'react'
+import { View, ScrollView, StyleSheet, Alert } from 'react-native'
+import Button from './register/Button'
+import Input from './register/Input'
+import ComboPicker from './register/Picker'
+import GuideViewer from './register/GuideViewer'
 
 var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
 
-export default class Guide extends Component {
-  constructor(props){
-    super(props)
-    const { screenProps: { entrypointid } } = this.props
-    this.state = {
-      guide: [],
-      entrypointid: entrypointid,
-      idx: 0,
-    }
-    this.loadData = this.loadData.bind(this)
-    this.transit = this.transit.bind(this)
-    this.loadData(this.state.entrypointid)
-  }
+class Guide extends Component {
+	constructor() {
+		super()
+		this.state = {
+			entry: [],
+			guide: [],
+			entrypointid: 1,
+			viewerIndex: 0,
+		}
+		this.loadEntry = this.loadEntry.bind(this)
+		this.loadGuide = this.loadGuide.bind(this)
+		this.entryChange = this.entryChange.bind(this)
+		this.transit = this.transit.bind(this)
+		this.loadEntry()
+		this.loadGuide(this.state.entrypointid)
+	}
 
-  loadData(entrypointid) {
-    db.transaction((tx) => {
-      tx.executeSql('SELECT * FROM tb_guide where entrypointid=?', [entrypointid], (tx, results) => {
-        let { guide } = this.state;
-        var len = results.rows.length;
-        for (let i = 0; i < len; i++) {
-          let row = results.rows.item(i);
-          guide.push(row);
-        }
+	loadEntry() {
+		db.transaction((tx) => {
+			tx.executeSql('SELECT entrypointid, entrypointdesc FROM tb_guide group by entrypointid, entrypointdesc', 
+				[], (tx, results) => {
+				let { entry } = this.state;
+				var len = results.rows.length;
+				for (let i = 0; i < len; i++) {
+					let row = results.rows.item(i);
+					let obj = {
+						value: row.entrypointid,
+						label: row.entrypointdesc,
+					}
+					entry.push(obj);
+				}
 
-        this.setState({
-          guide: guide
-        })
-      });
-    });    
-  }
+				this.setState({
+					entry: entry,
+				})
+			});
+		});    
+	}
 
-  transit(){
-    let { guide, idx } = this.state
-    if (++idx > guide.length-1) {
-      Alert.alert('導航結束！')
-      idx = 0
-    } 
-    this.setState({
-      idx: idx
-    })
-  }
+	loadGuide(entrypointid) {
+		db.transaction((tx) => {
+			tx.executeSql('SELECT * FROM tb_guide where entrypointid=?', [entrypointid], (tx, results) => {
+				var len = results.rows.length;
+				let guide = []
+				for (let i = 0; i < len; i++) {
+					let row = results.rows.item(i);
+					guide.push(row);
+				}
 
-  render() {
-    let { guide, idx } = this.state
-    guideList = guide.filter((element, index )=> index == idx).map((guide, i) => {
-      return (
-        <View 
-          style={styles.pageStyle} 
-          key={i}>
-          <Text 
-            style={styles.heading}>
-            {guide.entrypointdesc}
-          </Text>
-          <Image 
-            source={{
-              uri: 'https://drive.google.com/uc?id=' + guide.photopath,
-              method: 'POST',
-            }}
-            style={{width: 300, height: 200}} />
-          <Text 
-            style={styles.heading}>
-            {guide.presentlocation}
-          </Text>
-          <Text 
-            style={styles.heading}>
-            {guide.description}
-          </Text>
-        </View>
-      )
-    })
+				this.setState({
+					guide: guide,
+				})
+			});
+		});    
+	}
 
-    return (
-      <ScrollView
-        style={styles.viewPager}>
-        {guideList}
-        <Button 
-          btnText='下一步'
-          onPress={this.transit}
-        />
-      </ScrollView>
-    )
-  }
+	entryChange(text) {
+		let { entrypointid } = this.state
+		this.setState({
+			entrypointid: text,
+			viewerIndex: 0,
+		})
+		this.loadGuide(text)
+	}
+
+	transit(){
+		let { viewerIndex, guide } = this.state
+		if (++viewerIndex > guide.length-1) {
+			Alert.alert('導航結束！')
+			viewerIndex = 0
+		} 
+		this.setState({
+			viewerIndex: viewerIndex
+		})
+	}
+
+	render () {
+		let { entry, entrypointid, guide, viewerIndex } = this.state
+		return (
+			<View
+				style={styles.container}>
+				<ScrollView
+					keyboardShouldPersistTaps='always'
+					style={styles.content}>
+					<ComboPicker
+						selectValue={entrypointid}
+						selectChange={(text)=>this.entryChange(text)}
+						dataList={entry}
+						label='入口' />
+					<GuideViewer
+						screenProps={{
+				          entrypointid: entrypointid,
+				          guide: guide,
+				          transit: this.transit,
+				          viewerIndex: viewerIndex
+				        }} />
+				</ScrollView>
+			</View>
+		)
+	}
 }
 
 const styles = StyleSheet.create({
-  viewPager: {
-    flex: 1,
+  container: {
+    backgroundColor: '#f5f5f5',
+    flex: 1
   },
-  pageStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    flex: 1,
-  },
-  heading: {
-    fontSize: 30,
-    marginBottom: 10,
-    alignSelf: 'center'
-  },
-});
+  content: {
+    flex: 1
+  }
+})
+
+export default Guide

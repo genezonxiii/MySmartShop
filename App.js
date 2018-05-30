@@ -28,11 +28,7 @@ export default class App extends Component<Props> {
   }
   render() {
     return (
-      <Tabs 
-        screenProps={{
-          entrypointid: this.state.entrypointid,
-        }}
-      />
+      <Tabs />
     );
   }
 }
