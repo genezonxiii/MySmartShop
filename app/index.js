@@ -3,6 +3,7 @@ import React from 'react'
 import Login from './Login'
 import Register from './Register'
 import Guide from './Guide'
+import Demo from './Demo'
 
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 
@@ -19,6 +20,7 @@ const Nav = createStackNavigator({
 })
 
 const Tabs = createBottomTabNavigator({
+  Demo: { screen: Demo },
   Main: { screen: Nav },
   Reister: { screen: Register },
   Login: { screen: Login },
