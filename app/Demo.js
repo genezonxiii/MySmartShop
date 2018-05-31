@@ -4,6 +4,7 @@ import Button from './register/Button'
 import Input from './register/Input'
 import Picker from './register/Picker'
 import GuideViewer from './register/GuideViewer'
+import Menu from './register/Menu'
 
 class Demo extends Component {
 	state = {
@@ -27,11 +28,7 @@ class Demo extends Component {
 	render () {
 		let { guide, list } = this.state
 		return (
-			<View> 
-				<Button
-					btnText='Button'
-					onPress={this.transit}
-				/>
+			<ScrollView> 
 				<Input 
 					label='Input Label'
 					placeholder='Placeholder'
@@ -40,15 +37,21 @@ class Demo extends Component {
 					dataList={list}
 					label='DropDown Label'
 				/>
-				<ScrollView>
-					<GuideViewer
-						screenProps={{
-							entrypointid: 1,
-							guide: guide,
-							viewerIndex: 0
-						}} />
-				</ScrollView>
-			</View>
+				<Button
+					btnText='Button'
+					onPress={this.transit}
+				/>
+				<Menu
+					btnText='Button'
+					onPress={this.transit}
+				/>
+				<GuideViewer
+					screenProps={{
+						entrypointid: 1,
+						guide: guide,
+						viewerIndex: 0
+					}} />
+			</ScrollView>
 		)
 	}
 }
