@@ -3,6 +3,8 @@ import { View, ScrollView, StyleSheet, Alert } from 'react-native'
 import Button from './register/Button'
 import Input from './register/Input'
 
+import { logins } from './register/theme'
+
 class Login extends Component {
 	constructor() {
 		super()
@@ -64,10 +66,10 @@ class Login extends Component {
 
 		return (
 			<View
-				style={styles.container}>
+				style={logins.container}>
 				<ScrollView
 					keyboardShouldPersistTaps='always'
-					style={styles.content}>
+					style={logins.content}>
 					<Input
 						inputValue={login.username}
 						inputChange={(text)=>this.usernameChange(text)}
@@ -87,15 +89,5 @@ class Login extends Component {
 		)
 	}
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#f5f5f5',
-    flex: 1
-  },
-  content: {
-    flex: 1
-  }
-})
 
 export default Login

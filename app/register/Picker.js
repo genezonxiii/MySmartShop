@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text, Picker, StyleSheet } from 'react-native'
 
+import { pickers } from './theme';
+
 const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
    <View>
-      <Text style={ styles.textLabel }>
+      <Text style={ pickers.textLabel }>
          {label}
       </Text>
       <Picker 
@@ -17,14 +19,3 @@ const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
 )
 
 export default ComboPicker
-
-const styles = StyleSheet.create({
-   text: {
-      fontSize: 30,
-      alignSelf: 'center',
-      color: 'red'
-   },
-   textLabel: {
-
-   },
-})

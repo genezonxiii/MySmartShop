@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import Button from './Button';
+import { guideViewers } from './theme';
 
 var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
@@ -23,10 +24,10 @@ export default class GuideViewer extends Component {
     guideList = guide.filter((element, index )=> index == viewerIndex).map((guide, i) => {
       return (
         <View 
-          style={styles.pageStyle} 
+          style={guideViewers.pageStyle} 
           key={i}>
           <Text 
-            style={styles.heading}>
+            style={guideViewers.heading}>
             {guide.entrypointdesc}
           </Text>
           <Image 
@@ -34,13 +35,13 @@ export default class GuideViewer extends Component {
               uri: 'https://drive.google.com/uc?id=' + guide.photopath,
               method: 'POST',
             }}
-            style={{width: 300, height: 200}} />
+            style={guideViewers.image} />
           <Text 
-            style={styles.heading}>
+            style={guideViewers.heading}>
             {guide.presentlocation}
           </Text>
           <Text 
-            style={styles.heading}>
+            style={guideViewers.heading}>
             {guide.description}
           </Text>
         </View>
@@ -49,7 +50,7 @@ export default class GuideViewer extends Component {
 
     return (
       <ScrollView
-        style={styles.viewPager}>
+        style={guideViewers.viewPager}>
         {guideList}
         <Button 
           btnText='下一步'
@@ -59,20 +60,3 @@ export default class GuideViewer extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  viewPager: {
-    flex: 1,
-  },
-  pageStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    flex: 1,
-  },
-  heading: {
-    fontSize: 30,
-    marginBottom: 10,
-    alignSelf: 'center'
-  },
-});

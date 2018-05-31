@@ -4,6 +4,8 @@ import Button from './register/Button'
 import Input from './register/Input'
 import ComboPicker from './register/Picker'
 
+import { registers } from './register/theme'
+
 class Register extends Component {
 
   constructor () {
@@ -167,10 +169,10 @@ class Register extends Component {
 
     return (
       <View
-        style={styles.container}>
+        style={registers.container}>
         <ScrollView
           keyboardShouldPersistTaps='always'
-          style={styles.content}>
+          style={registers.content}>
           <Input
             inputValue={register.accountId}
             inputChange={(text)=>this.accountIdChange(text)}
@@ -246,15 +248,5 @@ class Register extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#f5f5f5',
-    flex: 1
-  },
-  content: {
-    flex: 1
-  }
-})
 
 export default Register

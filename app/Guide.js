@@ -5,6 +5,8 @@ import Input from './register/Input'
 import ComboPicker from './register/Picker'
 import GuideViewer from './register/GuideViewer'
 
+import { guides } from './register/theme'
+
 var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
 
@@ -88,10 +90,10 @@ class Guide extends Component {
 		let { entry, entrypointid, guide, viewerIndex } = this.state
 		return (
 			<View
-				style={styles.container}>
+				style={guides.container}>
 				<ScrollView
 					keyboardShouldPersistTaps='always'
-					style={styles.content}>
+					style={guides.content}>
 					<ComboPicker
 						selectValue={entrypointid}
 						selectChange={(text)=>this.entryChange(text)}
@@ -109,15 +111,5 @@ class Guide extends Component {
 		)
 	}
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#f5f5f5',
-    flex: 1
-  },
-  content: {
-    flex: 1
-  }
-})
 
 export default Guide
