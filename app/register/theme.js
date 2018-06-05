@@ -24,33 +24,28 @@ const buttons = StyleSheet.create({
 })
 
 const menus = StyleSheet.create({
+  item: {
+    padding: 5,
+    justifyContent: 'center',
+    borderColor: 'rgba(255,232,31, .3)',
+    borderBottomWidth: 1
+  },
+  text: {
+    color: '#ffe81f',
+    fontSize: 28
+  },
   container: {
     flex: 1,
+    backgroundColor: 'black',
   },
-})
-
-const menuButtons = StyleSheet.create({
-  buttonContainer: {
-    alignItems: 'flex-end'
-  },
-  button: {
-    height: 50,
-    paddingLeft: 20,
-    paddingRight: 20,
-    backgroundColor: '#0f0f0f',
-    width: 200,
-    marginRight: 20,
-    marginTop: 15,
-    borderWidth: 1,
-    borderColor: 'rgba(0,0,0,.1)',
+  item2: {
+    padding: 20,
     justifyContent: 'center',
-    alignItems: 'center'
+    borderColor: 'rgba(255,232,31, .3)',
+    borderRightWidth: 1,
+    backgroundColor: 'white',
   },
-  submit: {
-    color: '#666666',
-    fontWeight: '600'
-  }
-})
+});
 
 const guideViewers = StyleSheet.create({
   viewPager: {
@@ -134,4 +129,4 @@ const registers = StyleSheet.create({
   }
 })
 
-export { buttons, menus, menuButtons, guideViewers, inputs, pickers, guides, logins, registers }
+export { buttons, menus, guideViewers, inputs, pickers, guides, logins, registers }

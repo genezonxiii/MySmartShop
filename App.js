@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 
-import Tabs from './app/index'
+import Demo from './app/Demo'
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -15,7 +15,7 @@ export default class App extends Component<Props> {
   }
   render() {
     return (
-      <Tabs />
+      <Demo />
     );
   }
 }

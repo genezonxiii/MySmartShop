@@ -4,7 +4,7 @@ import Button from './register/Button'
 import Input from './register/Input'
 import Picker from './register/Picker'
 import GuideViewer from './register/GuideViewer'
-import Menu from './register/Menu'
+import AppNavi from './register/Menu'
 
 class Demo extends Component {
 	state = {
@@ -22,9 +22,7 @@ class Demo extends Component {
 			{label: 'Label5', value: '5'},
 		],
 	}
-	transit () {
 
-	}
 	render () {
 		let { guide, list } = this.state
 		return (
@@ -41,9 +39,7 @@ class Demo extends Component {
 					btnText='Button'
 					onPress={this.transit}
 				/>
-				<Menu
-					btnText='Button'
-					onPress={this.transit}
+				<AppNavi
 				/>
 				<GuideViewer
 					screenProps={{
