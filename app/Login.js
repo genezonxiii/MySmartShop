@@ -58,7 +58,7 @@ class Login extends Component {
 
 	navigate () {
 		Alert.alert('登入成功!!')
-		this.props.navigation.navigate('Reister')
+		this.props.navigation.navigate('Register')
 	}
 
 	render () {

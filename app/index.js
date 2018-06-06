@@ -22,7 +22,7 @@ const Nav = createStackNavigator({
 const Tabs = createBottomTabNavigator({
   Demo: { screen: Demo },
   Main: { screen: Nav },
-  Reister: { screen: Register },
+  Register: { screen: Register },
   Login: { screen: Login },
   Guide: { screen: Guide },
 }, {
