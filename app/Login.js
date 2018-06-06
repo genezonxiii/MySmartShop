@@ -12,6 +12,8 @@ class Login extends Component {
 			login: {
 				username: '',
 				password: '',
+			},
+			token: {
 			}
 		}
 		this.login=this.login.bind(this)
@@ -46,7 +48,8 @@ class Login extends Component {
 					login: {
 						username: '',
 						password: '',
-					}
+					},
+					token: responseJson
 				})
 				this.navigate()
 			}
