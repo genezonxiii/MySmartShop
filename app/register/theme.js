@@ -24,26 +24,30 @@ const buttons = StyleSheet.create({
 })
 
 const menus = StyleSheet.create({
-  item: {
+  itemUp: {
+    height: 100,
     padding: 5,
     justifyContent: 'center',
     borderColor: 'rgba(255,232,31, .3)',
     borderBottomWidth: 1
   },
-  text: {
-    color: '#ffe81f',
-    fontSize: 28
-  },
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-  item2: {
+  itemDown: {
+    height: 100,
     padding: 20,
     justifyContent: 'center',
     borderColor: 'rgba(255,232,31, .3)',
     borderRightWidth: 1,
     backgroundColor: 'white',
+  },
+  text: {
+    color: '#ffe81f',
+    fontSize: 16
+  },
+  container: {
+    height: 100,
+    flexDirection: 'row',// F
+    flexWrap: 'wrap',
+    backgroundColor: 'black',
   },
 });
 
@@ -129,4 +133,14 @@ const registers = StyleSheet.create({
   }
 })
 
-export { buttons, menus, guideViewers, inputs, pickers, guides, logins, registers }
+const mains = StyleSheet.create({
+  container: {
+    backgroundColor: '#f5f5f5',
+    flex: 1
+  },
+})
+
+export { buttons, menus, guideViewers, 
+  inputs, pickers, guides, 
+  logins, registers, mains
+}

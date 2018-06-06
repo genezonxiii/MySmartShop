@@ -1,21 +1,41 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 
-import Demo from './app/Demo'
+import Login from './app/Login';
+import Register from './app/Register';
+import Guide from './app/Guide';
+import Main from './app/Main';
 
-type Props = {};
-export default class App extends Component<Props> {
-  state = {
-    entrypointid: 1
+import Menu from './app/register/Menu';
+
+const App = StackNavigator(
+  {
+    Home: {
+      screen: Main,
+    },
+    Login: {
+      screen: Login
+    },
+    Register: {
+      screen: Register
+    },
+    Guide: {
+      screen: Guide
+    },
+  },
+  {
+    initialRouteName: 'Home',
+    /* The header config from HomeScreen is now here */
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   }
-  render() {
-    return (
-      <Demo />
-    );
-  }
-}
+);
+
+export default App

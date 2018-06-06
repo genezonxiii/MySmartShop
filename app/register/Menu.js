@@ -5,21 +5,23 @@ Image,
 StyleSheet,
 TouchableHighlight,
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 
+import ImageP from './ImageP';
 import { menus } from './theme';
-
-import Login from '../Login';
-import Register from '../Register';
-import Guide from '../Guide';
 
 const links = [
   { title: '登入', value: 'Login' },
   { title: '註冊', value: 'Register' },
   { title: '導航', value: 'Guide' },
+  { title: 'title1', value: 'value1' },
+  { title: 'title2', value: 'value2' },
+  { title: 'title3', value: 'value3' },
 ]
 
-class Menu extends Component  {
+export default class Menu extends Component  {
+  constructor(props){
+    super(props)
+  }
   navigate = (link) => {
     const { navigate } = this.props.navigation
     navigate(link)
@@ -29,8 +31,13 @@ class Menu extends Component  {
     return (
     <TouchableHighlight
       onPress={() => this.navigate(item.value)}
-      style={[menus.item, { borderTopWidth: index === 0 ? 1 : null }, index === 2 ? menus.item2:null]}>
-      <Text style={menus.text}>{item.title}</Text>
+      style={[index < 3 ? menus.itemUp:null, index >= 3 ? menus.itemDown:null, { borderTopWidth: index === 0 ? 1 : null }]}>
+      <View>
+        <ImageP 
+          value={item.value}
+        />
+        <Text style={menus.text}>{item.title}</Text>
+      </View>
     </TouchableHighlight>
     )
   }
@@ -50,19 +57,3 @@ class Menu extends Component  {
 
 }
 
-const AppNavi = StackNavigator({
-  Home: {
-    screen: Menu,
-  },
-  Login: {
-    screen: Login
-  },
-  Register: {
-    screen: Register
-  },
-  Guide: {
-    screen: Guide
-  },
-});
-
-export default AppNavi
