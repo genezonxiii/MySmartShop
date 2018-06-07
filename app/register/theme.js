@@ -143,7 +143,29 @@ const mains = StyleSheet.create({
   },
 })
 
+const productViewers = StyleSheet.create({
+  viewPager: {
+    flex: 1,
+  },
+  pageStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    flex: 1,
+  },
+  heading: {
+    fontSize: 30,
+    marginBottom: 10,
+    alignSelf: 'center'
+  },
+  image: {
+    width: 300, 
+    height: 200,
+  }
+});
+
 export { buttons, menus, guideViewers, 
   inputs, pickers, guides, 
-  logins, registers, mains
+  logins, registers, mains,
+  productViewers,
 }
