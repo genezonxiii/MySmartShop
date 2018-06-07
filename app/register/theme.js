@@ -88,7 +88,10 @@ const inputs = StyleSheet.create({
     paddingRight: 10
   },
   textLabel: {
-
+    color: '#555',
+    fontSize: 18,
+    marginBottom: 5,
+    display: 'flex',
   },
 })
 
