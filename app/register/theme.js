@@ -136,6 +136,13 @@ const registers = StyleSheet.create({
   }
 })
 
+const products = StyleSheet.create({
+  container: {
+    backgroundColor: '#f5f5f5',
+    flex: 1
+  },
+})
+
 const mains = StyleSheet.create({
   container: {
     backgroundColor: '#f5f5f5',
@@ -164,8 +171,21 @@ const productViewers = StyleSheet.create({
   }
 });
 
+const productScanners = StyleSheet.create({
+  centerText: {
+    flex: 1,
+    fontSize: 18,
+    padding: 10,
+    color: '#777',    
+  },
+  cameraStyle: {
+
+  }
+});
+
 export { buttons, menus, guideViewers, 
   inputs, pickers, guides, 
   logins, registers, mains,
-  productViewers,
+  products, 
+  productViewers, productScanners,
 }

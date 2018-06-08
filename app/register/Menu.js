@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Alert, 
 FlatList,
-Image,
-StyleSheet,
 TouchableHighlight,
 } from 'react-native';
 
@@ -13,7 +11,7 @@ const links = [
   { title: '登入', value: 'Login' },
   { title: '註冊', value: 'Register' },
   { title: '導航', value: 'Guide' },
-  { title: 'title1', value: 'value1' },
+  { title: '特色商品', value: 'Product' },
   { title: 'title2', value: 'value2' },
   { title: 'title3', value: 'value3' },
 ]

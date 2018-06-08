@@ -5,8 +5,10 @@ import Login from './app/Login';
 import Register from './app/Register';
 import Guide from './app/Guide';
 import Main from './app/Main';
+import Product from './app/Product';
 
 import Menu from './app/register/Menu';
+import ProductViewer from './app/register/ProductViewer';
 
 const App = StackNavigator(
   {
@@ -21,6 +23,12 @@ const App = StackNavigator(
     },
     Guide: {
       screen: Guide
+    },
+    Product: {
+      screen: Product
+    },
+    ProductViewer: {
+      screen: ProductViewer
     },
   },
   {

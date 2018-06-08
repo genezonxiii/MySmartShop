@@ -23,11 +23,13 @@ export default class ProductViewer extends Component {
   }
 
   componentWillMount() {
-    this.getProduct()
+    let { navigation } = this.props
+    const productId = navigation.getParam('productId', '')
+    this.getProduct(productId)
   }
 
-  getProduct() {
-    let url = 'http://192.168.28.20:8080/SmartShop/product/product?id=2'
+  getProduct(productId) {
+    let url = 'http://192.168.28.30:8080/SmartShop/product/product?id=' + productId
     fetch(url, {  
       method: 'POST',
       headers: {
@@ -46,6 +48,8 @@ export default class ProductViewer extends Component {
   }
 
   transit() {
+    let { navigate } = this.props.navigation
+    navigate('ProductViewer')
   }
 
   render() {
@@ -76,14 +80,14 @@ export default class ProductViewer extends Component {
     })
 
     return (
-      <ScrollView
+      <View
         style={productViewers.viewPager}>
         {productList}
         <Button 
           btnText='確認'
           onPress={this.transit}
         />
-      </ScrollView>
+      </View>
     )
   }
 }
