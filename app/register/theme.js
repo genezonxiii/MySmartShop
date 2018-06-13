@@ -157,7 +157,6 @@ const productViewers = StyleSheet.create({
   pageStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
     flex: 1,
   },
   heading: {
@@ -166,9 +165,14 @@ const productViewers = StyleSheet.create({
     alignSelf: 'center'
   },
   image: {
-    width: 300, 
+    width: 350, 
     height: 200,
-  }
+  },
+  video: {
+    width: 300, 
+    height: 225,
+    padding: 10,
+  },
 });
 
 const productScanners = StyleSheet.create({
