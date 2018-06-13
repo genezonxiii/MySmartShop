@@ -7,6 +7,7 @@ import {
   Image,
   Alert,
 } from 'react-native';
+import VideoPlayer from 'react-native-video-player';
 
 import Button from './Button';
 import { productViewers } from './theme';
@@ -16,7 +17,10 @@ export default class ProductViewer extends Component {
     super(props)
     this.state = {
       product: {
-      }
+      },
+      video: { width: undefined, height: undefined, duration: undefined },
+      thumbnailUrl: undefined,
+      videoUrl: undefined,
     }
     this.getProduct = this.getProduct.bind(this)
     this.transit = this.transit.bind(this)
@@ -43,8 +47,21 @@ export default class ProductViewer extends Component {
         this.setState({
           product: responseJson
         })
+        this.getVideo(responseJson.video)
       }
     })    
+  }
+
+  getVideo(videoId){
+    global.fetch(`https://player.vimeo.com/video/${videoId}/config`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          thumbnailUrl: res.video.thumbs['640'],
+          videoUrl: res.request.files.hls.cdns[res.request.files.hls.default_cdn].url,
+          video: res.video,
+        })
+      });
   }
 
   transit() {
@@ -61,16 +78,26 @@ export default class ProductViewer extends Component {
         <View 
           style={productViewers.pageStyle} 
           key={i}>
-          <Text 
-            style={productViewers.heading}>
-            {product.name}
-          </Text>
           <Image 
             source={{
               uri: 'https://drive.google.com/uc?id=' + product.photo,
               method: 'POST',
             }}
             style={productViewers.image} />
+          <View style={productViewers.video}>
+            <VideoPlayer
+              endWithThumbnail
+              thumbnail={{ uri: this.state.thumbnailUrl }}
+              video={{ uri: this.state.videoUrl }}
+              videoWidth={this.state.video.width}
+              videoHeight={this.state.video.height}
+              ref={r => this.player = r}
+            />
+          </View> 
+          <Text 
+            style={productViewers.heading}>
+            {product.name}
+          </Text>
           <Text 
             style={productViewers.heading}>
             {product.description}
@@ -83,10 +110,6 @@ export default class ProductViewer extends Component {
       <View
         style={productViewers.viewPager}>
         {productList}
-        <Button 
-          btnText='確認'
-          onPress={this.transit}
-        />
       </View>
     )
   }
