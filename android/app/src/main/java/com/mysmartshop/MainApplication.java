@@ -3,6 +3,7 @@ package com.mysmartshop;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import org.reactnative.camera.RNCameraPackage;
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNCameraPackage(),
           new VectorIconsPackage(),
           new ReactVideoPackage(),
+          new LinearGradientPackage(),
           new MainReactPackage()
       );
     }
