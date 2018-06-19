@@ -84,6 +84,12 @@ export default class ProductViewer extends Component {
               method: 'POST',
             }}
             style={productViewers.image} />
+          <View style={productViewers.directionInfo}>
+            <Text 
+              style={productViewers.directionInfoH3}>
+              {product.name}
+            </Text>
+          </View>
           <View style={productViewers.video}>
             <VideoPlayer
               endWithThumbnail
@@ -95,11 +101,7 @@ export default class ProductViewer extends Component {
             />
           </View> 
           <Text 
-            style={productViewers.heading}>
-            {product.name}
-          </Text>
-          <Text 
-            style={productViewers.heading}>
+            style={productViewers.directionInfoP}>
             {product.description}
           </Text>
         </View>
@@ -107,10 +109,10 @@ export default class ProductViewer extends Component {
     })
 
     return (
-      <View
+      <ScrollView
         style={productViewers.viewPager}>
         {productList}
-      </View>
+      </ScrollView>
     )
   }
 }

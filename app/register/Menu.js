@@ -5,53 +5,46 @@ TouchableHighlight,
 } from 'react-native';
 
 import ImageP from './ImageP';
+import ImageButton from './ImageButton';
 import { menus } from './theme';
-
-const links = [
-  { title: '登入', value: 'Login' },
-  { title: '註冊', value: 'Register' },
-  { title: '導航', value: 'Guide' },
-  { title: '特色商品', value: 'Product' },
-  { title: 'title2', value: 'value2' },
-  { title: 'title3', value: 'value3' },
-]
 
 export default class Menu extends Component  {
   constructor(props){
     super(props)
+    this.navigate = this.navigate.bind(this)
   }
+
   navigate = (link) => {
     const { navigate } = this.props.navigation
     navigate(link)
   }
 
-  renderItem = ({ item, index }) => {
-    return (
-    <TouchableHighlight
-      onPress={() => this.navigate(item.value)}
-      style={[index < 3 ? menus.itemUp:null, index >= 3 ? menus.itemDown:null, { borderTopWidth: index === 0 ? 1 : null }]}>
-      <View>
-        <ImageP 
-          value={item.value}
-        />
-        <Text style={menus.text}>{item.title}</Text>
-      </View>
-    </TouchableHighlight>
-    )
-  }
-
   render() {
     return (
       <View style={menus.container}>
-        <FlatList
-          data={links}
-          keyExtractor={(item) => item.title}
-          renderItem={this.renderItem}
-          horizontal={true}
+        <ImageButton
+          btnText='登入'
+          btnImage='Login'
+          onPress={() => this.navigate('Login')}
+        />
+        <ImageButton
+          btnText='註冊'
+          btnImage='Register'
+          onPress={() => this.navigate('Register')}
+        />
+        <ImageButton
+          btnText='導航'
+          btnImage='Guide'
+          onPress={() => this.navigate('Guide')}
+        />
+        <ImageButton
+          btnText='特色商品'
+          btnImage='Product'
+          right='true'
+          onPress={() => this.navigate('Product')}
         />
       </View>
-    );
+    )
   }
-
 }
 

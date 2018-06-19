@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet, Alert } from 'react-native'
-import Button from './register/Button'
 import Input from './register/Input'
 import ComboPicker from './register/Picker'
 import GuideViewer from './register/GuideViewer'
@@ -91,22 +90,17 @@ class Guide extends Component {
 		return (
 			<View
 				style={guides.container}>
-				<ScrollView
-					keyboardShouldPersistTaps='always'
-					style={guides.content}>
-					<ComboPicker
-						selectValue={entrypointid}
-						selectChange={(text)=>this.entryChange(text)}
-						dataList={entry}
-						label='入口' />
-					<GuideViewer
-						screenProps={{
-				          entrypointid: entrypointid,
-				          guide: guide,
-				          transit: this.transit,
-				          viewerIndex: viewerIndex
-				        }} />
-				</ScrollView>
+				<ComboPicker
+					selectValue={entrypointid}
+					selectChange={(text)=>this.entryChange(text)}
+					dataList={entry} />
+				<GuideViewer
+					screenProps={{
+			          entrypointid: entrypointid,
+			          guide: guide,
+			          transit: this.transit,
+			          viewerIndex: viewerIndex
+			        }} />
 			</View>
 		)
 	}

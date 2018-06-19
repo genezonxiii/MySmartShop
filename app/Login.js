@@ -86,6 +86,7 @@ class Login extends Component {
 						placeholder='請輸入密碼' />
 					<Button
 						btnText='登入'
+						linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
 						onPress={this.login} />
 				</ScrollView>
 			</View>

@@ -36,7 +36,7 @@ const App = StackNavigator(
     /* The header config from HomeScreen is now here */
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#f4511e',
+        backgroundColor: '#967C4C',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {

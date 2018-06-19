@@ -15,7 +15,7 @@ class ProductScan extends Component {
 		return (
 			<ProductScanner 
 				navigation={this.props.navigation}
-				topText='請掃描特色商品QR code。'
+				topText='請掃描特色商品QR code'
 				btnText='還要再掃'
 			/>
 		)

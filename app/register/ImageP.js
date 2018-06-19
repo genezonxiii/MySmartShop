@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, View } from 'react-native'
-import { buttons } from './theme'
+import { imageButtons } from './theme'
 
 const ImageP = ({ value }) => (
 	<View>
@@ -8,19 +8,24 @@ const ImageP = ({ value }) => (
     	{
     		value == 'Login'?
 	        <Image 
-				style={{width: 50, height: 50}}
+	        	style={imageButtons.image}
 				source={ require('../image/icon_fortest.png') }
 			/>: 
     		value == 'Register'?
 	        <Image 
-	        	style={{width: 50, height: 50}}
+	        	style={imageButtons.image}
 				source={ require('../image/icon_fortest.png') }
 			/>:
 			value == 'Guide'?
 	        <Image 
-	        	style={{width: 50, height: 50}}
+	        	style={imageButtons.image}
 				source={ require('../image/icon_fortest.png') }
 			/>:
+			value == 'Product'?
+	        <Image 
+	        	style={imageButtons.image}
+				source={ require('../image/icon_fortest.png') }
+			/>:			
 	        null
     	}
 	

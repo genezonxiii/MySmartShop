@@ -5,16 +5,23 @@ import { pickers } from './theme';
 
 const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
    <View>
-      <Text style={ pickers.textLabel }>
-         {label}
-      </Text>
-      <Picker 
-         selectedValue = {selectValue} 
-         onValueChange = {selectChange}>
-         {dataList.map( (i, index) => (
-            <Picker.Item key={i} label={i.label} value={i.value} />
-         ))}
-      </Picker>
+      {
+         label != undefined?
+         <Text style={ pickers.inputLabel }>
+            {label}
+         </Text>:null
+      }
+      <View style={pickers.container}>
+         <Picker 
+            style={pickers.picker}
+            prompt='請選擇'
+            selectedValue = {selectValue} 
+            onValueChange = {selectChange}>
+            {dataList.map( (i, index) => (
+               <Picker.Item key={i} label={i.label} value={i.value} />
+            ))}
+         </Picker>
+      </View>
    </View>
 )
 

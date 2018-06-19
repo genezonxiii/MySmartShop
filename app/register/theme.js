@@ -2,92 +2,127 @@ import {StyleSheet} from 'react-native';
 
 const buttons = StyleSheet.create({
   buttonContainer: {
-    alignItems: 'flex-end'
   },
   button: {
-    height: 50,
-    paddingLeft: 20,
-    paddingRight: 20,
-    backgroundColor: '#ffffff',
-    width: 200,
-    marginRight: 20,
-    marginTop: 15,
-    borderWidth: 1,
-    borderColor: 'rgba(0,0,0,.1)',
-    justifyContent: 'center',
-    alignItems: 'center'
+    borderWidth: 3,
+    borderColor: '#312C2C',
+    borderRadius: 8,
   },
-  submit: {
-    color: '#666666',
-    fontWeight: '600'
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    padding: 12,
+    textAlign: 'center',
+    textDecorationLine: 'none',
+    backgroundColor: 'transparent',
+  },
+  linearGradient: {
+    borderRadius: 8,
   }
 })
 
 const menus = StyleSheet.create({
-  itemUp: {
-    height: 100,
-    padding: 5,
-    justifyContent: 'center',
-    borderColor: 'rgba(255,232,31, .3)',
-    borderBottomWidth: 1
+  container: {
+    flexDirection: 'row'
   },
-  itemDown: {
-    height: 100,
-    padding: 20,
-    justifyContent: 'center',
-    borderColor: 'rgba(255,232,31, .3)',
+});
+
+const imageButtons = StyleSheet.create({
+  buttonContainer: {
+    flex: 1,
+    borderColor: '#bbb',
+    paddingTop: 16,
+    paddingRight: 0,
+    paddingBottom: 16,
+    paddingLeft: 0,
+  },
+  buttonBorder: {
+    borderTopWidth: 1,
     borderRightWidth: 1,
-    backgroundColor: 'white',
+  },
+  buttonBorderRight: {
+    borderTopWidth: 1,
+  },
+  center: {
+    alignItems: 'center',
   },
   text: {
-    color: '#ffe81f',
-    fontSize: 16
+    color: '#555',
+    fontSize: 18,
+    textAlign: 'center',
   },
-  container: {
-    height: 100,
-    flexDirection: 'row',// F
-    flexWrap: 'wrap',
-    backgroundColor: 'black',
+  image: {
+    marginBottom: 10,
   },
 });
 
 const guideViewers = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   viewPager: {
     flex: 1,
   },
   pageStyle: {
+  },
+  locationTitle: {
+    color: '#333',
+    fontSize: 26,
+    fontWeight: '200',
+    margin: 0,
+    marginBottom: 10,
+    padding: 0,
+    textAlign: 'center',
+  },
+  directionInfo: {
+    marginTop: -50,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    flex: 1,
   },
-  heading: {
-    fontSize: 30,
-    marginBottom: 10,
-    alignSelf: 'center'
+  directionInfoH3: {
+    backgroundColor: '#967c4c',
+    color: '#fff',
+    fontSize: 24,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 16,
+    paddingLeft: 16,
+  },
+  directionInfoP: {
+    color: '#444',
+    fontSize: 16,
   },
   image: {
-  	width: 300, 
-  	height: 200,
+  	width: '100%',
+    height: 300,
+  },
+  btnRow: {
+    backgroundColor: '#3f3f3f',
+    paddingTop: 15,
+    paddingRight: 20,
+    paddingBottom: 15,
+    paddingLeft: 20,
+    bottom: 0,
+    width: '100%',
+    height: 80,
   }
 });
 
 const inputs = StyleSheet.create({
-  inputContainer: {
-    marginLeft: 20,
-    marginRight: 20,
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    shadowColor: '#000000',
-    shadowOffset: { width: 2, height: 2 }
+  inputWrap: {
+    marginBottom: 15,
   },
-  input: {
-    height: 60,
-    backgroundColor: '#ffffff',
-    paddingLeft: 10,
-    paddingRight: 10
+  inputText: {
+    backgroundColor: '#D8D8D8',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#C8C8C8',
+    borderRadius: 5,
+    fontSize: 18,
+    padding: 8,
   },
-  textLabel: {
+  inputLabel: {
     color: '#555',
     fontSize: 18,
     marginBottom: 5,
@@ -96,30 +131,39 @@ const inputs = StyleSheet.create({
 })
 
 const pickers = StyleSheet.create({
-   text: {
-      fontSize: 30,
-      alignSelf: 'center',
-      color: 'red'
-   },
-   textLabel: {
-
-   },
+  container: {
+    borderWidth: 1,
+    borderColor: '#C8C8C8',
+    borderRadius: 5,
+    overflow: 'hidden',
+    backgroundColor: '#D8D8D8',
+  },
+  picker: {
+  },
+  item: {
+    backgroundColor: 'lightgrey', 
+    marginLeft: 0, 
+    paddingLeft: 15,
+  },
+  inputLabel: {
+    color: '#555',
+    fontSize: 18,
+    marginBottom: 5,
+  },
 })
 
 const guides = StyleSheet.create({
   container: {
-    backgroundColor: '#f5f5f5',
     flex: 1
   },
-  content: {
-    flex: 1
-  }
 })
 
 const logins = StyleSheet.create({
   container: {
     backgroundColor: '#f5f5f5',
-    flex: 1
+    flex: 1,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   content: {
     flex: 1
@@ -129,11 +173,11 @@ const logins = StyleSheet.create({
 const registers = StyleSheet.create({
   container: {
     backgroundColor: '#f5f5f5',
-    flex: 1
   },
   content: {
-    flex: 1
-  }
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
 })
 
 const products = StyleSheet.create({
@@ -164,31 +208,61 @@ const productViewers = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'center'
   },
+  directionInfo: {
+    marginTop: -50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  directionInfoH3: {
+    backgroundColor: '#967c4c',
+    color: '#fff',
+    fontSize: 24,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 16,
+    paddingLeft: 16,
+  },
+  directionInfoP: {
+    color: '#444',
+    fontSize: 16,
+  },
   image: {
-    width: 350, 
-    height: 200,
+    width: '100%',
+    height: 300,
+
   },
   video: {
-    width: 300, 
-    height: 225,
-    padding: 10,
+    width: '90%',
   },
 });
 
 const productScanners = StyleSheet.create({
   centerText: {
-    flex: 1,
     fontSize: 18,
-    padding: 10,
-    color: '#777',    
+    color: '#777', 
+    textAlign: 'center',   
   },
   cameraStyle: {
 
-  }
+  },
+  top: {
+    width: '100%',
+  },
+  btnRow: {
+    backgroundColor: '#3f3f3f',
+    paddingTop: 15,
+    paddingRight: 20,
+    paddingBottom: 15,
+    paddingLeft: 20,
+    bottom: 0,
+    width: '100%',
+    height: 100,
+  },
 });
 
 export { buttons, menus, guideViewers, 
   inputs, pickers, guides, 
+  imageButtons,
   logins, registers, mains,
   products, 
   productViewers, productScanners,

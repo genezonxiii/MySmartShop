@@ -9,17 +9,16 @@ import {
 import { inputs } from './theme';
 
 const Input = ({ inputChange, inputValue, label, placeholder, passwordFlag }) => (
-  <View style={inputs.inputContainer}>
-    <Text style={ inputs.textLabel }>
+  <View style={inputs.inputWrap}>
+    <Text style={ inputs.inputLabel }>
       {label}
     </Text>
     <TextInput
       value={inputValue}
-      style={inputs.input}
+      style={inputs.inputText}
       secureTextEntry={passwordFlag?passwordFlag:false}
       placeholder={placeholder}
-      placeholderTextColor='#CACACA'
-      selectionColor='#666666'
+      underlineColorAndroid='transparent'
       onChangeText={inputChange} />
   </View>
 )

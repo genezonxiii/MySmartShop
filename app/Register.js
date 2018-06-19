@@ -242,6 +242,7 @@ class Register extends Component {
             label='出生日期' />
           <Button
             btnText='註冊'
+            linearColor={['#828282', '#494646', '#393636']}
             onPress={this.registration} />
         </ScrollView>
       </View>

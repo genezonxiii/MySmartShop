@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, Alert } from 'react-native'
+import { View, Text, Alert } from 'react-native'
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 import Button from './Button'
@@ -44,14 +44,19 @@ class ProductScanner extends Component {
 				onRead={this.onRead}
 				ref={(node) => { this.scanner = node }}
 				topContent={
-					<Text style={productScanners.centerText}>
-						{topText}
-					</Text>
+					<View style={productScanners.top}>
+						<Text style={productScanners.centerText}>
+							{topText}
+						</Text>
+					</View>
 				}
 				bottomContent={
-					<Button
-						btnText={btnText}
-						onPress={this.reset} />
+					<View style={productScanners.btnRow}>
+						<Button
+							btnText={btnText}
+							linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
+							onPress={this.reset} />
+					</View>
 				}
 				cameraStyle={productScanners.cameraStyle}
 			/>

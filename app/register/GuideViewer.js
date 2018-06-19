@@ -26,37 +26,42 @@ export default class GuideViewer extends Component {
         <View 
           style={guideViewers.pageStyle} 
           key={i}>
-          <Text 
-            style={guideViewers.heading}>
-            {guide.entrypointdesc}
-          </Text>
           <Image 
             source={{
               uri: 'https://drive.google.com/uc?id=' + guide.photopath,
               method: 'POST',
             }}
             style={guideViewers.image} />
-          <Text 
-            style={guideViewers.heading}>
-            {guide.presentlocation}
-          </Text>
-          <Text 
-            style={guideViewers.heading}>
-            {guide.description}
-          </Text>
+          <View
+            style={guideViewers.directionInfo}>
+            <Text 
+              style={guideViewers.directionInfoH3}>
+              {guide.presentlocation}
+            </Text>
+            <Text 
+              style={guideViewers.directionInfoP}>
+              {guide.description}
+            </Text>
+          </View>
         </View>
       )
     })
 
     return (
-      <ScrollView
-        style={guideViewers.viewPager}>
-        {guideList}
-        <Button 
-          btnText='下一步'
-          onPress={transit}
-        />
-      </ScrollView>
+      <View style={guideViewers.container}>
+        <ScrollView
+          style={guideViewers.viewPager}>
+          {guideList}
+        </ScrollView>
+        <View style={guideViewers.btnRow}>
+          <Button 
+            btnText='下一步'
+            onPress={transit}
+            linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
+          />
+        </View>
+
+      </View>
     )
   }
 }
