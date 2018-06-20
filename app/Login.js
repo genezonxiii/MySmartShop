@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet, Alert } from 'react-native'
-import Button from './register/Button'
-import Input from './register/Input'
+import Button from './component/Button'
+import Input from './component/Input'
 
-import { logins } from './register/theme'
+import { logins } from './component/theme'
 
 class Login extends Component {
 	constructor(props) {

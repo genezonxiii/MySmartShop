@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet, Alert } from 'react-native'
 
-import ProductScanner from './register/ProductScanner'
-import ProductViewer from './register/ProductViewer'
+import ProductScanner from './component/ProductScanner'
+import ProductViewer from './component/ProductViewer'
 
-import { products } from './register/theme'
+import { products } from './component/theme'
 
 class ProductScan extends Component {
 	constructor(props) {

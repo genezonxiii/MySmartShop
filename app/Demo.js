@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
-import Button from './register/Button'
-import Input from './register/Input'
-import Picker from './register/Picker'
-import GuideViewer from './register/GuideViewer'
-import AppNavi from './register/Menu'
+import Button from './component/Button'
+import Input from './component/Input'
+import Picker from './component/Picker'
+import GuideViewer from './component/GuideViewer'
+import AppNavi from './component/Menu'
 
 class Demo extends Component {
 	state = {

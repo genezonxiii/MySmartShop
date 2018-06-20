@@ -7,8 +7,8 @@ import Guide from './app/Guide';
 import Main from './app/Main';
 import Product from './app/Product';
 
-import Menu from './app/register/Menu';
-import ProductViewer from './app/register/ProductViewer';
+import Menu from './app/component/Menu';
+import ProductViewer from './app/component/ProductViewer';
 
 const MainStack = StackNavigator(
   {

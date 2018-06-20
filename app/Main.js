@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
 
-import Menu from './register/Menu'
+import Menu from './component/Menu'
 
-import { mains } from './register/theme'
+import { mains } from './component/theme'
 
 class Main extends Component {
 	constructor(props){

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet, Alert } from 'react-native'
-import Button from './register/Button'
-import Input from './register/Input'
-import ComboPicker from './register/Picker'
+import Button from './component/Button'
+import Input from './component/Input'
+import ComboPicker from './component/Picker'
 
-import { registers } from './register/theme'
+import { registers } from './component/theme'
 
 class Register extends Component {
 

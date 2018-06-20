@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet, Alert } from 'react-native'
-import Input from './register/Input'
-import ComboPicker from './register/Picker'
-import GuideViewer from './register/GuideViewer'
+import Input from './component/Input'
+import ComboPicker from './component/Picker'
+import GuideViewer from './component/GuideViewer'
 
-import { guides } from './register/theme'
+import { guides } from './component/theme'
 
 var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
