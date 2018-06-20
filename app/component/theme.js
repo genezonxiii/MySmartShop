@@ -48,7 +48,7 @@ const imageButtons = StyleSheet.create({
   },
   text: {
     color: '#555',
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'center',
   },
   image: {
@@ -92,10 +92,12 @@ const guideViewers = StyleSheet.create({
   directionInfoP: {
     color: '#444',
     fontSize: 16,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   image: {
   	width: '100%',
-    height: 300,
+    height: 250,
   },
   btnRow: {
     backgroundColor: '#3f3f3f',
@@ -105,7 +107,6 @@ const guideViewers = StyleSheet.create({
     paddingLeft: 20,
     bottom: 0,
     width: '100%',
-    height: 80,
   }
 });
 
@@ -131,6 +132,9 @@ const inputs = StyleSheet.create({
 })
 
 const pickers = StyleSheet.create({
+  pickerWrap: {
+    marginBottom: 15,
+  },
   container: {
     borderWidth: 1,
     borderColor: '#C8C8C8',
@@ -175,8 +179,8 @@ const registers = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   content: {
-    paddingLeft: 16,
     paddingRight: 16,
+    paddingLeft: 16,
   },
 })
 
@@ -209,7 +213,7 @@ const productViewers = StyleSheet.create({
     alignSelf: 'center'
   },
   directionInfo: {
-    marginTop: -50,
+    marginTop: -30,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -225,14 +229,19 @@ const productViewers = StyleSheet.create({
   directionInfoP: {
     color: '#444',
     fontSize: 16,
+    paddingTop: 10,
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingLeft: 20,
   },
   image: {
     width: '100%',
-    height: 300,
+    height: 250,
 
   },
   video: {
     width: '90%',
+    marginTop: 10,
   },
 });
 
@@ -256,7 +265,6 @@ const productScanners = StyleSheet.create({
     paddingLeft: 20,
     bottom: 0,
     width: '100%',
-    height: 100,
   },
 });
 

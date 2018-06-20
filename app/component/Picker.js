@@ -5,6 +5,7 @@ import { pickers } from './theme';
 
 const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
    <View>
+      <View style={ pickers.pickerWrap }>
       {
          label != undefined?
          <Text style={ pickers.inputLabel }>
@@ -21,6 +22,7 @@ const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
                <Picker.Item key={i} label={i.label} value={i.value} />
             ))}
          </Picker>
+      </View>
       </View>
    </View>
 )
