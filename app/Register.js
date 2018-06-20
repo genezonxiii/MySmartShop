@@ -161,7 +161,7 @@ class Register extends Component {
 
   navigate () {
     Alert.alert('註冊成功!!')
-    this.props.navigation.navigate('Login')
+    this.props.navigation.navigate('Home')
   }
 
   render () {

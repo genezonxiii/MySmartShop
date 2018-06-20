@@ -12,11 +12,15 @@ class ProductScan extends Component {
 	}
 
 	render () {
+		let { navigation, screenProps } = this.props
 		return (
 			<ProductScanner 
-				navigation={this.props.navigation}
+				navigation={navigation}
 				topText='請掃描特色商品QR code'
 				btnText='還要再掃'
+				screenProps={{
+		          loginToken: screenProps.loginToken,
+		        }}
 			/>
 		)
 	}

@@ -21,6 +21,7 @@ export default class ProductViewer extends Component {
       video: { width: undefined, height: undefined, duration: undefined },
       thumbnailUrl: undefined,
       videoUrl: undefined,
+      loginToken: this.props.screenProps.loginToken,
     }
     this.getProduct = this.getProduct.bind(this)
     this.transit = this.transit.bind(this)

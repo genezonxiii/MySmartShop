@@ -9,6 +9,9 @@ import { productScanners } from './theme'
 class ProductScanner extends Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			loginToken: this.props.screenProps.loginToken,
+		}
 		this.onRead = this.onRead.bind(this)
 		this.reset = this.reset.bind(this)
 	}

@@ -10,7 +10,7 @@ import Product from './app/Product';
 import Menu from './app/register/Menu';
 import ProductViewer from './app/register/ProductViewer';
 
-const App = StackNavigator(
+const MainStack = StackNavigator(
   {
     Home: {
       screen: Main,
@@ -45,5 +45,22 @@ const App = StackNavigator(
     },
   }
 );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loginToken: {},
+    }
+  }
+  render() {
+    return (
+      <MainStack 
+        screenProps={{ 
+          loginToken: this.state.loginToken
+        }} />
+    )
+  }
+}
 
 export default App

@@ -6,17 +6,17 @@ import Input from './register/Input'
 import { logins } from './register/theme'
 
 class Login extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 		this.state = {
 			login: {
 				username: '',
 				password: '',
 			},
-			token: {
-			}
+			loginToken: this.props.screenProps.loginToken,
 		}
 		this.login=this.login.bind(this)
+		console.log(this.state.loginToken)
 	}
 
 	usernameChange (text) {
@@ -49,8 +49,9 @@ class Login extends Component {
 						username: '',
 						password: '',
 					},
-					token: responseJson
+					loginToken: responseJson
 				})
+				this.props.screenProps.loginToken = responseJson
 				this.navigate()
 			}
 	    })
@@ -61,7 +62,7 @@ class Login extends Component {
 
 	navigate () {
 		Alert.alert('登入成功!!')
-		this.props.navigation.navigate('Register')
+		this.props.navigation.navigate('Home')
 	}
 
 	render () {

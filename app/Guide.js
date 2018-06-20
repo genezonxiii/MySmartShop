@@ -10,8 +10,8 @@ var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
 
 class Guide extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 		this.state = {
 			entry: [],
 			guide: [],

@@ -4,7 +4,6 @@ FlatList,
 TouchableHighlight,
 } from 'react-native';
 
-import ImageP from './ImageP';
 import ImageButton from './ImageButton';
 import { menus } from './theme';
 
