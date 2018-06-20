@@ -4,6 +4,7 @@ import Button from './component/Button'
 import Input from './component/Input'
 
 import { logins } from './component/theme'
+import { HOST_SERVER } from './component/constants';
 
 class Login extends Component {
 	constructor(props) {
@@ -29,7 +30,7 @@ class Login extends Component {
 
 	login () {
 		const { login } = this.state
-		let url = 'http://192.168.28.30:8080/SmartShop/customer/login'
+		let url = HOST_SERVER + 'customer/login'
 		fetch(url, {  
 			method: 'POST',
 			headers: {

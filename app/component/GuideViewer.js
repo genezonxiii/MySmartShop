@@ -10,6 +10,7 @@ import {
 
 import Button from './Button';
 import { guideViewers } from './theme';
+import { GOOGLE_DRIVE } from './constants';
 
 var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
@@ -28,7 +29,7 @@ export default class GuideViewer extends Component {
           key={i}>
           <Image 
             source={{
-              uri: 'https://drive.google.com/uc?id=' + guide.photopath,
+              uri: GOOGLE_DRIVE + guide.photopath,
               method: 'POST',
             }}
             style={guideViewers.image} />

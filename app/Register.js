@@ -5,6 +5,7 @@ import Input from './component/Input'
 import ComboPicker from './component/Picker'
 
 import { registers } from './component/theme'
+import { HOST_SERVER } from './component/constants';
 
 class Register extends Component {
 
@@ -114,7 +115,7 @@ class Register extends Component {
   registration () {
     const { register } = this.state
     let birthdate = "".concat(register.birthYear, "-", register.birthMonth, "-", register.birthDay)
-    const url = 'http://192.168.28.30:8080/SmartShop/customer/registration'
+    const url = HOST_SERVER + 'customer/registration'
     fetch(url, {  
       method: 'POST',
       headers: {

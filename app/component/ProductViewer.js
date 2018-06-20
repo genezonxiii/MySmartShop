@@ -11,6 +11,7 @@ import VideoPlayer from 'react-native-video-player';
 
 import Button from './Button';
 import { productViewers } from './theme';
+import { HOST_SERVER, GOOGLE_DRIVE } from './constants';
 
 export default class ProductViewer extends Component {
   constructor(props){
@@ -34,7 +35,7 @@ export default class ProductViewer extends Component {
   }
 
   getProduct(productId) {
-    let url = 'http://192.168.28.30:8080/SmartShop/product/product?id=' + productId
+    let url = HOST_SERVER + 'product/product?id=' + productId
     fetch(url, {  
       method: 'POST',
       headers: {
@@ -81,7 +82,7 @@ export default class ProductViewer extends Component {
           key={i}>
           <Image 
             source={{
-              uri: 'https://drive.google.com/uc?id=' + product.photo,
+              uri: GOOGLE_DRIVE + product.photo,
               method: 'POST',
             }}
             style={productViewers.image} />
