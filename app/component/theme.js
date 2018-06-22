@@ -31,10 +31,6 @@ const imageButtons = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     borderColor: '#bbb',
-    paddingTop: 16,
-    paddingRight: 0,
-    paddingBottom: 16,
-    paddingLeft: 0,
   },
   buttonBorder: {
     borderTopWidth: 1,
@@ -45,6 +41,8 @@ const imageButtons = StyleSheet.create({
   },
   center: {
     alignItems: 'center',
+    paddingTop: 16,
+    paddingBottom: 16,
   },
   text: {
     color: '#555',
@@ -181,7 +179,9 @@ const registers = StyleSheet.create({
   content: {
     paddingRight: 16,
     paddingLeft: 16,
-  },
+    paddingTop: 24,
+    paddingBottom: 24,
+  }
 })
 
 const products = StyleSheet.create({

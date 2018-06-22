@@ -9,7 +9,7 @@ const ImageButton = ({ btnText, btnImage, onPress, right }) => (
   <View 
     style={[imageButtons.buttonContainer, 
       right!='true'?imageButtons.buttonBorder:imageButtons.buttonBorderRight]}>
-    <TouchableHighlight onPress={onPress}>
+    <TouchableHighlight underlayColor={'#dddddd'} onPress={onPress}>
       <View style={imageButtons.center}>
         <ImageP value={btnImage} />
         <Text style={imageButtons.text}>

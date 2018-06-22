@@ -59,6 +59,7 @@ export default class GuideViewer extends Component {
             btnText='下一步'
             onPress={transit}
             linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
+            underlayColor={'#8B7F73'}
           />
         </View>
 

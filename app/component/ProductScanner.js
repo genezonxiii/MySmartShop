@@ -58,6 +58,7 @@ class ProductScanner extends Component {
 						<Button
 							btnText={btnText}
 							linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
+							underlayColor={'#8B7F73'}
 							onPress={this.reset} />
 					</View>
 				}

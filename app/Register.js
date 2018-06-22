@@ -172,8 +172,8 @@ class Register extends Component {
       <View
         style={registers.container}>
         <ScrollView
-          keyboardShouldPersistTaps='always'
-          style={registers.content}>
+          keyboardShouldPersistTaps='always'>
+          <View style={registers.content}>
           <Input
             inputValue={register.accountId}
             inputChange={(text)=>this.accountIdChange(text)}
@@ -244,7 +244,9 @@ class Register extends Component {
           <Button
             btnText='註冊'
             linearColor={['#828282', '#494646', '#393636']}
+            underlayColor={'#464343'}
             onPress={this.registration} />
+          </View>
         </ScrollView>
       </View>
     )
