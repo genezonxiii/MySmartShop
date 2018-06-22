@@ -9,7 +9,7 @@ const ImageP = ({ value }) => (
     		value == 'Login'?
 	        <Image 
 	        	style={imageButtons.image}
-				source={ require('../image/icon_fortest.png') }
+				source={ require('../image/menuicon_login.png') }
 			/>: 
     		value == 'Register'?
 	        <Image 
@@ -19,12 +19,12 @@ const ImageP = ({ value }) => (
 			value == 'Guide'?
 	        <Image 
 	        	style={imageButtons.image}
-				source={ require('../image/icon_fortest.png') }
+				source={ require('../image/menuicon_navigation.png') }
 			/>:
 			value == 'Product'?
 	        <Image 
 	        	style={imageButtons.image}
-				source={ require('../image/icon_fortest.png') }
+				source={ require('../image/menuicon_goods.png') }
 			/>:			
 	        null
     	}
