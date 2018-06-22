@@ -14,7 +14,7 @@ const ImageP = ({ value }) => (
     		value == 'Register'?
 	        <Image 
 	        	style={imageButtons.image}
-				source={ require('../image/icon_fortest.png') }
+				source={ require('../image/menuicon_register.png') }
 			/>:
 			value == 'Guide'?
 	        <Image 
