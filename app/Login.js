@@ -73,8 +73,8 @@ class Login extends Component {
 			<View
 				style={logins.container}>
 				<ScrollView
-					keyboardShouldPersistTaps='always'
-					style={logins.content}>
+					keyboardShouldPersistTaps='always'>
+					<View style={logins.content}>
 					<Input
 						inputValue={login.username}
 						inputChange={(text)=>this.usernameChange(text)}
@@ -91,6 +91,7 @@ class Login extends Component {
 						linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
 						underlayColor={'#8B7F73'}
 						onPress={this.login} />
+					</View>
 				</ScrollView>
 			</View>
 		)

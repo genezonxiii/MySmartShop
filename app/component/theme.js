@@ -164,11 +164,12 @@ const logins = StyleSheet.create({
   container: {
     backgroundColor: '#f5f5f5',
     flex: 1,
-    paddingLeft: 16,
-    paddingRight: 16,
   },
   content: {
-    flex: 1
+    paddingRight: 16,
+    paddingLeft: 16,
+    paddingTop: 24,
+    paddingBottom: 24,
   }
 })
 
