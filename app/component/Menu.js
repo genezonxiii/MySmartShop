@@ -29,7 +29,7 @@ export default class Menu extends Component  {
         <ImageButton
           btnText='註冊'
           btnImage='Register'
-          onPress={() => this.navigate('Register')}
+          onPress={() => this.navigate('Privacy')}
         />
         <ImageButton
           btnText='導航'

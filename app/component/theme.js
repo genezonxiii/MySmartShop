@@ -108,6 +108,40 @@ const guideViewers = StyleSheet.create({
   }
 });
 
+const privacys = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  web: {
+    height: 100,
+  },
+  containerStyle: {
+    backgroundColor: '#443F3F',
+    borderWidth: 0,
+    margin: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    borderRadius: 0,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 16,
+    paddingLeft: 16,
+  },
+  chkTextStyle: {
+    fontSize: 18,
+    color: '#fff',
+  },
+  btnRow: {
+    backgroundColor: '#3f3f3f',
+    paddingTop: 15,
+    paddingRight: 20,
+    paddingBottom: 15,
+    paddingLeft: 20,
+    bottom: 0,
+    width: '100%',
+  }
+});
+
 const inputs = StyleSheet.create({
   inputWrap: {
     marginBottom: 15,
@@ -197,6 +231,10 @@ const mains = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     flex: 1
   },
+  image: {
+    width: '100%',
+    height: 250,
+  },
 })
 
 const productViewers = StyleSheet.create({
@@ -273,6 +311,7 @@ export { buttons, menus, guideViewers,
   inputs, pickers, guides, 
   imageButtons,
   logins, registers, mains,
+  privacys,
   products, 
   productViewers, productScanners,
 }
