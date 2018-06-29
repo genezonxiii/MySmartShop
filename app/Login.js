@@ -32,7 +32,6 @@ class Login extends Component {
 		const { login } = this.state
 		let url = HOST_SERVER + 'customer/login'
 		fetch(url, {  
-			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',

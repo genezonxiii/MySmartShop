@@ -37,7 +37,6 @@ export default class ProductViewer extends Component {
   getProduct(productId) {
     let url = HOST_SERVER + 'product/product?id=' + productId
     fetch(url, {  
-      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -83,7 +82,6 @@ export default class ProductViewer extends Component {
           <Image 
             source={{
               uri: GOOGLE_DRIVE + product.photo,
-              method: 'POST',
             }}
             style={productViewers.image} />
           <View style={productViewers.directionInfo}>

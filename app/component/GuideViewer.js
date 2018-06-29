@@ -30,7 +30,6 @@ export default class GuideViewer extends Component {
           <Image 
             source={{
               uri: GOOGLE_DRIVE + guide.photopath,
-              method: 'POST',
             }}
             style={guideViewers.image} />
           <View
