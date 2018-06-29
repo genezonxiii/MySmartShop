@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, StyleSheet, Alert } from 'react-native'
+import { View, ScrollView, StyleSheet, Alert, Platform } from 'react-native'
 import Input from './component/Input'
 import ComboPicker from './component/Picker'
 import GuideViewer from './component/GuideViewer'
@@ -7,7 +7,12 @@ import GuideViewer from './component/GuideViewer'
 import { guides } from './component/theme'
 
 var SQLite = require('react-native-sqlite-storage')
-var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
+var db = undefined
+if (Platform.OS === 'ios') {
+	db = SQLite.openDatabase({name: 'guide.db', createFromLocation: 1})
+} if (Platform.OS === 'android') {
+	db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})	
+}
 
 class Guide extends Component {
 	constructor(props) {
