@@ -117,6 +117,7 @@ class Register extends Component {
     let birthdate = "".concat(register.birthYear, "-", register.birthMonth, "-", register.birthDay)
     const url = HOST_SERVER + 'customer/registration'
     fetch(url, {  
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
