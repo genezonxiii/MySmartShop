@@ -39,16 +39,19 @@ class Register extends Component {
         {label: '已婚', value: '1'},
       ],
       dateList: {
-        year: Array(99).fill().map((v, i) => {
+        year: Array(100).fill().map((v, i) => {
           let now = new Date()
           let year = now.getFullYear()
-          return {label: String(year - (98 - i)), value: String(year - (98 - i))} 
+          return i !== 0?{label: String(year - (99 - i)), value: String(year - (99 - i))}: 
+            {label: '請選擇', value: String(-1)}
         }),
-        month: Array(12).fill().map((v, i) => {
-          return {label: String(this.zeroFill(i+1, 2)), value: String(this.zeroFill(i+1, 2))} 
+        month: Array(13).fill().map((v, i) => {
+          return i !== 0?{label: String(this.zeroFill(i, 2)), value: String(this.zeroFill(i, 2))}: 
+             {label: '請選擇', value: String(-1)}
         }),
-        day: Array(31).fill().map((v, i) => {
-          return {label: String(this.zeroFill(i+1, 2)), value: String(this.zeroFill(i+1, 2))} 
+        day: Array(32).fill().map((v, i) => {
+          return i !== 0?{label: String(this.zeroFill(i, 2)), value: String(this.zeroFill(i, 2))}: 
+            {label: '請選擇', value: String(-1)}
         }),
       }
     }
@@ -226,21 +229,23 @@ class Register extends Component {
             inputChange={(text)=>this.numbersofchildrenChange(text)}
             label='子女數'
             placeholder='請輸入子女數' />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
           <ComboPicker
             selectValue={register.birthYear}
             selectChange={(text)=>this.birthYearChange(text)}
             dataList={dateList.year}
-            label='出生年份' />
+            label='　出生年份　' />
           <ComboPicker
             selectValue={register.birthMonth}
             selectChange={(text)=>this.birthMonthChange(text)}
             dataList={dateList.month}
-            label='出生月份' />
+            label='　　月份　　' />
           <ComboPicker
             selectValue={register.birthDay}
             selectChange={(text)=>this.birthDayChange(text)}
             dataList={dateList.day}
-            label='出生日期' />
+            label='　　日期　　' />
+          </View>
           <Button
             btnText='註冊'
             linearColor={['#828282', '#494646', '#393636']}

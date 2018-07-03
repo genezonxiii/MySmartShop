@@ -17,7 +17,6 @@ const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
          Platform.OS === 'android'?
          <Picker 
             style={pickers.picker}
-            prompt='請選擇'
             selectedValue = {selectValue} 
             onValueChange = {selectChange}>
             {dataList.map( (i, index) => (
