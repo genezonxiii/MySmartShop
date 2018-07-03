@@ -3,7 +3,15 @@ import { View, Text, Picker, StyleSheet, Platform } from 'react-native'
 
 import { pickers } from './theme';
 
-const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
+export default class ComboPicker extends Component {
+  constructor(props){
+    super(props)
+  }
+
+   render() {
+      let { selectValue, selectChange, dataList, label } = this.props
+
+      return (
    <View>
       <View style={ pickers.pickerWrap }>
       {
@@ -37,6 +45,6 @@ const ComboPicker = ({ selectValue, selectChange, dataList, label }) => (
       </View>
       </View>
    </View>
-)
-
-export default ComboPicker
+      )
+   }
+}
