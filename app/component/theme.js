@@ -92,6 +92,7 @@ const guideViewers = StyleSheet.create({
     fontSize: 16,
     paddingTop: 10,
     paddingBottom: 10,
+    lineHeight: 24,
   },
   image: {
   	width: '100%',
@@ -186,6 +187,10 @@ const pickers = StyleSheet.create({
     fontSize: 18,
     marginBottom: 5,
   },
+  itemStyle: {
+    height: 44,
+    fontSize: 18,
+  },
 })
 
 const guides = StyleSheet.create({
@@ -272,6 +277,7 @@ const productViewers = StyleSheet.create({
     paddingRight: 20,
     paddingBottom: 10,
     paddingLeft: 20,
+    lineHeight: 24,
   },
   image: {
     width: '100%',
