@@ -5,7 +5,7 @@ import Input from './component/Input'
 import ComboPicker from './component/Picker'
 
 import { registers } from './component/theme'
-import { HOST_SERVER } from './component/constants';
+import * as constants from './component/constants';
 
 class Register extends Component {
 
@@ -27,17 +27,8 @@ class Register extends Component {
         marriage: '',
         numbersofchildren: '',
       },
-      occupationList: [
-        {label: '程式設計師', value: '01'},
-        {label: '教師', value: '02'},
-        {label: '裁縫師', value: '03'},
-        {label: '室內設計師', value: '04'},
-        {label: '復健師', value: '05'},
-      ],
-      marriageList: [
-        {label: '未婚', value: '0'},
-        {label: '已婚', value: '1'},
-      ],
+      occupationList: [],
+      marriageList: [],
       dateList: {
         year: Array(100).fill().map((v, i) => {
           let now = new Date()
@@ -56,6 +47,41 @@ class Register extends Component {
       }
     }
     this.registration=this.registration.bind(this)
+  componentWillMount() {
+    this.getParameter('ocu')
+    this.getParameter('mrg')
+  }
+
+  getParameter(kind) {
+    let url = constants.HOST_SERVER + 'parameter/param?kind=' + kind
+    fetch(url, {  
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      let list = []
+      responseJson.map((item)=> {
+        list.push( {label: item.description, value: item.code} )
+      })
+      kind === 'ocu'? this.setOccupation(list):null
+      kind === 'mrg'? this.setMarriage(list):null
+    })    
+  }
+
+  setOccupation(list){
+    this.setState({
+      occupationList: list
+    })
+  }
+
+  setMarriage(list){
+    this.setState({
+      marriageList: list
+    })
   }
 
   zeroFill ( number, width ) {
