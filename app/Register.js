@@ -26,6 +26,8 @@ class Register extends Component {
         occupation: '',
         marriage: '',
         numbersofchildren: '',
+        idNo: '',
+        gender: '',
       },
       occupationList: [],
       marriageList: [],
@@ -141,6 +143,14 @@ class Register extends Component {
     this.setState({ register: { ...this.state.register, numbersofchildren: text } })
   }
 
+  idNoChange (text) {
+    this.setState({ register: { ...this.state.register, idNo: text } })
+  }
+
+  genderChange (text) {
+    this.setState({ register: { ...this.state.register, gender: text } })
+  }
+
   registration () {
     const { register } = this.state
     let birthdate = "".concat(register.birthYear, "-", register.birthMonth, "-", register.birthDay)
@@ -155,6 +165,8 @@ class Register extends Component {
         accountId: register.accountId,
         username: register.username,
         password: register.password,
+        idNo: register.idNo,
+        gender: register.gender,
         mobile: register.mobile,
         email: register.email,
         birthdate: birthdate,
@@ -179,6 +191,8 @@ class Register extends Component {
             occupation: '',
             marriage: '',
             numbersofchildren: '',
+            idNo: '',
+            gender: '',
           }
         })
         this.navigate()
@@ -214,16 +228,6 @@ class Register extends Component {
             label='E-mail'
             placeholder='請輸入E-mail' />
           <Input
-            inputValue={register.username}
-            inputChange={(text)=>this.usernameChange(text)}
-            label='姓名'
-            placeholder='請輸入姓名' />
-          <Input
-            inputValue={register.mobile}
-            inputChange={(text)=>this.mobileChange(text)}
-            label='手機'
-            placeholder='請輸入手機' />
-          <Input
             inputValue={register.password}
             inputChange={(text)=>this.passwordChange(text)}
             passwordFlag={true}
@@ -235,6 +239,26 @@ class Register extends Component {
             passwordFlag={true}
             label='確認密碼'
             placeholder='請再次輸入密碼' />
+          <Input
+            inputValue={register.username}
+            inputChange={(text)=>this.usernameChange(text)}
+            label='姓名'
+            placeholder='請輸入姓名' />
+          <Input
+            inputValue={register.idNo}
+            inputChange={(text)=>this.idNoChange(text)}
+            label='證件號碼'
+            placeholder='請輸入身分證/護照' />
+          <Input
+            inputValue={register.gender}
+            inputChange={(text)=>this.genderChange(text)}
+            label='性別'
+            placeholder='請輸入性別' />
+          <Input
+            inputValue={register.mobile}
+            inputChange={(text)=>this.mobileChange(text)}
+            label='手機'
+            placeholder='請輸入手機' />
           <Input
             inputValue={register.age}
             inputChange={(text)=>this.ageChange(text)}
