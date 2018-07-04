@@ -144,7 +144,7 @@ class Register extends Component {
   registration () {
     const { register } = this.state
     let birthdate = "".concat(register.birthYear, "-", register.birthMonth, "-", register.birthDay)
-    const url = HOST_SERVER + 'customer/registration'
+    const url = constants.HOST_SERVER + 'customer/registration'
     fetch(url, {  
       method: 'POST',
       headers: {
