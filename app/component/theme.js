@@ -313,9 +313,25 @@ const productScanners = StyleSheet.create({
   },
 });
 
+const switchns = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  inputLabel: {
+    color: '#555',
+    fontSize: 18,
+    marginBottom: 5,
+    display: 'flex',
+  },
+  switch: {
+    
+  },
+});
+
 export { buttons, menus, guideViewers, 
   inputs, pickers, guides, 
-  imageButtons,
+  imageButtons, switchns,
   logins, registers, mains,
   privacys,
   products, 

@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet, Alert } from 'react-native'
 import Button from './component/Button'
 import Input from './component/Input'
 import ComboPicker from './component/Picker'
+import SwitchN from './component/SwitchN'
 
 import { registers } from './component/theme'
 import * as constants from './component/constants';
@@ -28,6 +29,7 @@ class Register extends Component {
         numbersofchildren: '',
         idNo: '',
         gender: '',
+        ageswitch: false,
       },
       occupationList: [],
       marriageList: [],
@@ -151,6 +153,10 @@ class Register extends Component {
     this.setState({ register: { ...this.state.register, gender: text } })
   }
 
+  toggleAgeSwitch (value) {
+    this.setState({ register: { ...this.state.register, ageswitch: value } })
+  }
+
   registration () {
     const { register } = this.state
     let birthdate = "".concat(register.birthYear, "-", register.birthMonth, "-", register.birthDay)
@@ -208,8 +214,51 @@ class Register extends Component {
     this.props.navigation.navigate('Home')
   }
 
+  renderNumbersofchildren() {
+    return (
+      <Input
+        inputValue={this.state.register.numbersofchildren}
+        inputChange={(text)=>this.numbersofchildrenChange(text)}
+        label='子女數'
+        placeholder='請輸入子女數' />
+    )
+  }
+
+  renderAge() {
+    return (
+      <Input
+        inputValue={this.state.register.age}
+        inputChange={(text)=>this.ageChange(text)}
+        label='年齡'
+        placeholder='請輸入年齡' />
+    )
+  }
+
+  renderBirthday() {
+    let { register, dateList } = this.state
+    return (
+      <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
+      <ComboPicker
+        selectValue={register.birthYear}
+        selectChange={(text)=>this.birthYearChange(text)}
+        dataList={dateList.year}
+        label='　出生年份　' />
+      <ComboPicker
+        selectValue={register.birthMonth}
+        selectChange={(text)=>this.birthMonthChange(text)}
+        dataList={dateList.month}
+        label='　　月份　　' />
+      <ComboPicker
+        selectValue={register.birthDay}
+        selectChange={(text)=>this.birthDayChange(text)}
+        dataList={dateList.day}
+        label='　　日期　　' />
+      </View>
+    )
+  }
+
   render () {
-    const { register, occupationList, marriageList, dateList } = this.state
+    const { register, occupationList, marriageList } = this.state
 
     return (
       <View
@@ -259,11 +308,6 @@ class Register extends Component {
             inputChange={(text)=>this.mobileChange(text)}
             label='手機'
             placeholder='請輸入手機' />
-          <Input
-            inputValue={register.age}
-            inputChange={(text)=>this.ageChange(text)}
-            label='年齡'
-            placeholder='請輸入年齡' />
           <ComboPicker
             selectValue={register.occupation}
             selectChange={(text)=>this.occupationChange(text)}
@@ -274,28 +318,13 @@ class Register extends Component {
             selectChange={(text)=>this.marriageChange(text)}
             dataList={marriageList}
             label='婚姻' />
-          <Input
-            inputValue={register.numbersofchildren}
-            inputChange={(text)=>this.numbersofchildrenChange(text)}
-            label='子女數'
-            placeholder='請輸入子女數' />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
-          <ComboPicker
-            selectValue={register.birthYear}
-            selectChange={(text)=>this.birthYearChange(text)}
-            dataList={dateList.year}
-            label='　出生年份　' />
-          <ComboPicker
-            selectValue={register.birthMonth}
-            selectChange={(text)=>this.birthMonthChange(text)}
-            dataList={dateList.month}
-            label='　　月份　　' />
-          <ComboPicker
-            selectValue={register.birthDay}
-            selectChange={(text)=>this.birthDayChange(text)}
-            dataList={dateList.day}
-            label='　　日期　　' />
-          </View>
+          { register.marriage === '1'? this.renderNumbersofchildren():null }
+          <SwitchN
+            valueChange={(value)=>this.toggleAgeSwitch(value)}
+            value={register.ageswitch}
+            hint='選擇年齡/出生年月日'
+          />
+          { register.ageswitch === false? this.renderAge() : this.renderBirthday() }
           <Button
             btnText='註冊'
             linearColor={['#828282', '#494646', '#393636']}
