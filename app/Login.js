@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, StyleSheet, Alert } from 'react-native'
+import { View, ScrollView, StyleSheet, Alert, AsyncStorage } from 'react-native'
 import Button from './component/Button'
 import Input from './component/Input'
 
@@ -14,10 +14,8 @@ class Login extends Component {
 				username: '',
 				password: '',
 			},
-			loginToken: this.props.screenProps.loginToken,
 		}
 		this.login=this.login.bind(this)
-		console.log(this.state.loginToken)
 	}
 
 	usernameChange (text) {
@@ -50,9 +48,11 @@ class Login extends Component {
 						username: '',
 						password: '',
 					},
-					loginToken: responseJson
 				})
-				this.props.screenProps.loginToken = responseJson
+				this.props.screenProps.loginToken = responseJson.token
+				AsyncStorage.setItem('loginToken', JSON.stringify(responseJson.token))
+					.then(() => console.log('storage updated!'))
+					.catch(e => console.log('e: ', e))
 				this.navigate()
 			}
 	    })

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, Image } from 'react-native'
+import { View, ScrollView, Image, AsyncStorage } from 'react-native'
 
 import Menu from './component/Menu'
 
@@ -8,6 +8,14 @@ import { mains } from './component/theme'
 class Main extends Component {
 	constructor(props){
 		super(props)
+	}
+	async componentDidMount() {
+		try {
+			let loginToken = await AsyncStorage.getItem('loginToken')
+			this.props.screenProps.loginToken = loginToken
+		} catch (e) {
+			console.log('e: ', e)
+		}
 	}
 	render () {
 		return(
