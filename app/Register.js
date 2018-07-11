@@ -51,6 +51,7 @@ class Register extends Component {
       }
     }
     this.registration=this.registration.bind(this)
+  }
   componentWillMount() {
     this.getParameter('ocu')
     this.getParameter('mrg')
