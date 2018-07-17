@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   ScrollView,
   Image,
-  Alert,
 } from 'react-native';
 import VideoPlayer from 'react-native-video-player';
 
-import Button from './Button';
 import { productViewers } from './theme';
 import { HOST_SERVER, GOOGLE_DRIVE } from './constants';
 

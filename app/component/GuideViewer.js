@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   ScrollView,
   Image,
-  Alert,
 } from 'react-native';
 
 import Button from './Button';

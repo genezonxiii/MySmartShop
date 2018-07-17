@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Picker, StyleSheet, Platform } from 'react-native'
+import { View, Text, Picker, Platform } from 'react-native'
 
 import { pickers } from './theme';
 

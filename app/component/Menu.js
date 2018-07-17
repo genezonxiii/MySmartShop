@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Alert, 
-FlatList,
-TouchableHighlight,
-} from 'react-native';
+import { View } from 'react-native';
 
 import ImageButton from './ImageButton';
 import { menus } from './theme';

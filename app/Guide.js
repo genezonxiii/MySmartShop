@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, StyleSheet, Alert, Platform } from 'react-native'
-import Input from './component/Input'
+import { View, Alert, Platform } from 'react-native'
 import ComboPicker from './component/Picker'
 import GuideViewer from './component/GuideViewer'
 

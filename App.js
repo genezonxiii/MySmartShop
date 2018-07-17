@@ -7,8 +7,6 @@ import Guide from './app/Guide';
 import Main from './app/Main';
 import Product from './app/Product';
 import Privacy from './app/Privacy';
-
-import Menu from './app/component/Menu';
 import ProductViewer from './app/component/ProductViewer';
 
 const MainStack = StackNavigator(

@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient';
+import { View, Text, TouchableHighlight } from 'react-native'
 
 import ImageP from './ImageP';
 import { imageButtons } from './theme'
