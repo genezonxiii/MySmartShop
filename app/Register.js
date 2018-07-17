@@ -33,6 +33,8 @@ class Register extends Component {
       },
       occupationList: [],
       marriageList: [],
+      ageList: [],
+      genderList: [],
       dateList: {
         year: Array(100).fill().map((v, i) => {
           let now = new Date()
@@ -51,10 +53,15 @@ class Register extends Component {
       }
     }
     this.registration=this.registration.bind(this)
+    this.valid=this.valid.bind(this)
+    this.required=this.required.bind(this)
   }
+
   componentWillMount() {
     this.getParameter('ocu')
     this.getParameter('mrg')
+    this.getParameter('age')
+    this.getParameter('gnd')
   }
 
   getParameter(kind) {
@@ -72,8 +79,10 @@ class Register extends Component {
       responseJson.map((item)=> {
         list.push( {label: item.description, value: item.code} )
       })
-      kind === 'ocu'? this.setOccupation(list):null
-      kind === 'mrg'? this.setMarriage(list):null
+      kind === 'ocu'? this.setOccupation(list):undefined
+      kind === 'mrg'? this.setMarriage(list):undefined
+      kind === 'age'? this.setAge(list):undefined
+      kind === 'gnd'? this.setGender(list):undefined
     })    
   }
 
@@ -86,6 +95,18 @@ class Register extends Component {
   setMarriage(list){
     this.setState({
       marriageList: list
+    })
+  }
+
+  setAge(list){
+    this.setState({
+      ageList: list
+    })
+  }
+
+  setGender(list){
+    this.setState({
+      genderList: list
     })
   }
 
@@ -158,9 +179,62 @@ class Register extends Component {
     this.setState({ register: { ...this.state.register, ageswitch: value } })
   }
 
+  validateAccountId (text) {
+    var re = /^[A-Za-z0-9]+$/
+    return re.test(text)
+  }
+
+  validateEmail (text) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(text);
+  }
+
+  validatePassword (text) {
+    var re = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/
+    return re.test(text);
+  }
+
+  validatePasswordMatch (text, textConfirm) {
+    return text == textConfirm;
+  }
+
+  validateMobile (text) {
+    var re = /^09\d{8}$/
+    return re.test(text);
+  }
+
+  required() {
+    const { register } = this.state
+    let errorMsg = []
+    register.accountId == ''?errorMsg.push(constants.REQUIRED_ACCOUNT_ID):undefined
+    register.email == ''?errorMsg.push(constants.REQUIRED_EMAIL):undefined
+    register.password == ''?errorMsg.push(constants.REQUIRED_PASSWORD):undefined
+    register.passwordConfirm == ''?errorMsg.push(constants.REQUIRED_PASSWORD_CONFIRM):undefined
+    register.username == ''?errorMsg.push(constants.REQUIRED_USERNAME):undefined
+    register.idNo == ''?errorMsg.push(constants.REQUIRED_IDNO):undefined
+    register.gender == ''?errorMsg.push(constants.REQUIRED_GENDER):undefined
+
+    errorMsg.length > 0? Alert.alert('提示', errorMsg.join("\r\n")):this.valid()
+  }
+
+  valid () {
+    const { register } = this.state
+    let errorMsg = []
+    !this.validateAccountId(register.accountId)? errorMsg.push(constants.ERROR_MSG_ACCOUNT_ID):undefined
+    !this.validateEmail(register.email)? errorMsg.push(constants.ERROR_MSG_EMAIL):undefined
+    !this.validatePassword(register.password)?errorMsg.push(constants.ERROR_MSG_PASSWORD_RULE):undefined
+    !this.validatePasswordMatch(register.password, register.passwordConfirm)?
+      errorMsg.push(constants.ERROR_MSG_PASSWORD_MATCH):undefined
+    register.mobile!=='' && ! this.validateMobile(register.mobile)?
+      errorMsg.push(constants.ERROR_MSG_MOBILE):undefined
+
+    errorMsg.length > 0? Alert.alert('提示', errorMsg.join("\r\n")):this.registration()
+  }
+
   registration () {
     const { register } = this.state
-    let birthdate = "".concat(register.birthYear, "-", register.birthMonth, "-", register.birthDay)
+    let birthdate = register.birthYear === '' || register.birthMonth === '' || register.birthDay === ''?
+      '':"".concat(register.birthYear, "-", register.birthMonth, "-", register.birthDay)
     const url = constants.HOST_SERVER + 'customer/registration'
     fetch(url, {  
       method: 'POST',
@@ -226,12 +300,13 @@ class Register extends Component {
   }
 
   renderAge() {
+    let { register, ageList } = this.state
     return (
-      <Input
-        inputValue={this.state.register.age}
-        inputChange={(text)=>this.ageChange(text)}
-        label='年齡'
-        placeholder='請輸入年齡' />
+      <ComboPicker
+        selectValue={register.age}
+        selectChange={(text)=>this.ageChange(text)}
+        dataList={ageList}
+        label='年齡' />
     )
   }
 
@@ -259,7 +334,7 @@ class Register extends Component {
   }
 
   render () {
-    const { register, occupationList, marriageList } = this.state
+    const { register, occupationList, marriageList, genderList } = this.state
 
     return (
       <View
@@ -270,40 +345,40 @@ class Register extends Component {
           <Input
             inputValue={register.accountId}
             inputChange={(text)=>this.accountIdChange(text)}
-            label='帳號'
+            label='帳號(必填)'
             placeholder='請輸入使用者帳號' />
           <Input
             inputValue={register.email}
             inputChange={(text)=>this.emailChange(text)}
-            label='E-mail'
+            label='E-mail(必填)'
             placeholder='請輸入E-mail' />
           <Input
             inputValue={register.password}
             inputChange={(text)=>this.passwordChange(text)}
             passwordFlag={true}
-            label='密碼'
+            label='密碼(必填)'
             placeholder='請輸入密碼' />
           <Input
             inputValue={register.passwordConfirm}
             inputChange={(text)=>this.passwordConfirmChange(text)}
             passwordFlag={true}
-            label='確認密碼'
+            label='確認密碼(必填)'
             placeholder='請再次輸入密碼' />
           <Input
             inputValue={register.username}
             inputChange={(text)=>this.usernameChange(text)}
-            label='姓名'
+            label='姓名(必填)'
             placeholder='請輸入姓名' />
           <Input
             inputValue={register.idNo}
             inputChange={(text)=>this.idNoChange(text)}
-            label='證件號碼'
+            label='證件號碼(必填)'
             placeholder='請輸入身分證/護照' />
-          <Input
-            inputValue={register.gender}
-            inputChange={(text)=>this.genderChange(text)}
-            label='性別'
-            placeholder='請輸入性別' />
+          <ComboPicker
+            selectValue={register.gender}
+            selectChange={(text)=>this.genderChange(text)}
+            dataList={genderList}
+            label='性別(必填)' />
           <Input
             inputValue={register.mobile}
             inputChange={(text)=>this.mobileChange(text)}
@@ -319,7 +394,7 @@ class Register extends Component {
             selectChange={(text)=>this.marriageChange(text)}
             dataList={marriageList}
             label='婚姻' />
-          { register.marriage === '1'? this.renderNumbersofchildren():null }
+          { register.marriage === '1'? this.renderNumbersofchildren():undefined }
           <SwitchN
             valueChange={(value)=>this.toggleAgeSwitch(value)}
             value={register.ageswitch}
@@ -330,7 +405,7 @@ class Register extends Component {
             btnText='註冊'
             linearColor={['#828282', '#494646', '#393636']}
             underlayColor={'#464343'}
-            onPress={this.registration} />
+            onPress={this.required} />
           </View>
         </ScrollView>
       </View>
