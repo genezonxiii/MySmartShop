@@ -81,7 +81,7 @@ class Guide extends Component {
 	transit(){
 		let { viewerIndex, guide } = this.state
 		if (++viewerIndex > guide.length-1) {
-			Alert.alert('導航結束！')
+			Alert.alert('提示', '導航結束！')
 			viewerIndex = 0
 		} 
 		this.setState({

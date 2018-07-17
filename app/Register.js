@@ -280,12 +280,12 @@ class Register extends Component {
       }
     })
     .catch((error) => {
-      Alert.alert('註冊失敗！');
+      Alert.alert('提示', '註冊失敗！');
     });
   }
 
   navigate () {
-    Alert.alert('註冊成功!!')
+    Alert.alert('提示', '註冊成功!!')
     this.props.navigation.navigate('Home')
   }
 

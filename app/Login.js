@@ -57,12 +57,12 @@ class Login extends Component {
 			}
 	    })
 		.catch((error) => {
-	      	Alert.alert('登入失敗！');
+	      	Alert.alert('提示', '登入失敗！');
 	    });
 	}
 
 	navigate () {
-		Alert.alert('登入成功!!')
+		Alert.alert('提示', '登入成功!!')
 		this.props.navigation.navigate('Home')
 	}
 

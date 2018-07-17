@@ -26,7 +26,7 @@ const ImageP = ({ value }) => (
 	        	style={imageButtons.image}
 				source={ require('../image/menuicon_goods.png') }
 			/>:			
-	        null
+	        undefined
     	}
 	
 	</View>

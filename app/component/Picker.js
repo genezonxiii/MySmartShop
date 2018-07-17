@@ -18,7 +18,7 @@ export default class ComboPicker extends Component {
          label != undefined?
          <Text style={ pickers.inputLabel }>
             {label}
-         </Text>:null
+         </Text>:undefined
       }
       <View style={pickers.container}>
       {

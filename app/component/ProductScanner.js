@@ -22,7 +22,7 @@ class ProductScanner extends Component {
 		if (productId != '') {
 			navigate('ProductViewer', {productId: productId})
 		} else {
-			Alert.alert('無法讀取此特色商品')
+			Alert.alert('提示', '無法讀取此特色商品')
 		}
 	}
 
