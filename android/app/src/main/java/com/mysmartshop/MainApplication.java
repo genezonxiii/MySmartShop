@@ -3,6 +3,7 @@ package com.mysmartshop;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.wenkesj.voice.VoicePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.brentvatne.react.ReactVideoPackage;
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
           new VectorIconsPackage(),
           new ReactVideoPackage(),
           new LinearGradientPackage(),
+          new VoicePackage(),
           new MainReactPackage()
       );
     }
