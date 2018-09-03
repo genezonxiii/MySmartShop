@@ -46,7 +46,7 @@ const imageButtons = StyleSheet.create({
   },
   text: {
     color: '#555',
-    fontSize: 16,
+    fontSize: 12,
     textAlign: 'center',
   },
   image: {
@@ -66,7 +66,7 @@ const guideViewers = StyleSheet.create({
   locationTitle: {
     color: '#333',
     fontSize: 26,
-    fontWeight: '200',
+    fontWeight: 'bold',
     margin: 0,
     marginBottom: 10,
     padding: 0,
@@ -329,6 +329,81 @@ const switchns = StyleSheet.create({
   },
 });
 
+const imageX = StyleSheet.create({
+  image: {
+    width: '100%',
+    height: 225,
+    marginBottom: 15,
+  },
+})
+
+const voice = StyleSheet.create({
+  pageContainer: {
+    flex: 1,
+  },
+  container: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  buttonContainer: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  button: {
+    width: 100,
+    height: 100,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#555',
+    marginTop: 10,
+    marginBottom: 20,
+    fontSize: 18,
+  },
+  stat: {
+    textAlign: 'center',
+    color: '#B0171F',
+    marginBottom: 20,
+    fontSize: 14,
+  },
+  result: {
+    textAlign: 'center',
+    color: '#967C4C',
+    marginBottom: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+})
+
+const blockViewer = StyleSheet.create({
+  container: {
+    paddingTop: 5,
+    paddingRight: 10,
+    paddingBottom: 5,
+    paddingLeft: 10,
+  },
+  brandBlock: {
+    textAlign: 'center',
+    color: '#555',
+    marginBottom: 5,
+    fontSize: 18,
+  },
+  imageContainer: {
+
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#555',
+    marginTop: 20,
+    marginBottom: 20,
+    fontSize: 18,
+  },
+})
+
 export { buttons, menus, guideViewers, 
   inputs, pickers, guides, 
   imageButtons, switchns,
@@ -336,4 +411,5 @@ export { buttons, menus, guideViewers,
   privacys,
   products, 
   productViewers, productScanners,
+  imageX, voice, blockViewer,
 }
