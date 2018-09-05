@@ -146,9 +146,9 @@ export default class LocGuide extends Component {
     let brand = partialResults[0]
     
     db.transaction((tx) => {
-      tx.executeSql('SELECT district, brand, blockEqual ' 
+      tx.executeSql('SELECT district, brand, districtEqual, blockEqual ' 
         + 'FROM tb_position where brand=? or brandEqual like ? '
-        + 'group by district, brand, blockEqual', [brand, '%' + brand + '%'], (tx, results) => {
+        + 'group by district, brand, districtEqual, blockEqual', [brand, '%' + brand + '%'], (tx, results) => {
         var len = results.rows.length;
         let brandList = []
         for (let i = 0; i < len; i++) {

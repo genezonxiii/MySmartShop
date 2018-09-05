@@ -17,12 +17,13 @@ class BlockViewer extends Component {
 	render () {
 		let { navigation } = this.props
 		const brand = navigation.getParam('brand', '')
-		brandImage = brand.map((brand, index) => ( 
-			<View style={blockViewer.imageContainer}>
-				<Text style={blockViewer.brandBlock}> 
+		const districtEqual = brand[0].districtEqual
+		brandImage = brand.map((brand, index) => (
+			<View key={'v-'+index} style={blockViewer.imageContainer}>
+				<Text key={'t-'+index} style={blockViewer.brandBlock}>
 					{brand.brand} {brand.district}
 				</Text>
-				<ImageX key={index} value={brand.blockEqual} />
+				<ImageX key={'i1-'+index} value={brand.blockEqual} />
 			</View>
 		))
 		return (
@@ -30,7 +31,7 @@ class BlockViewer extends Component {
 		        <Text style={blockViewer.instructions}>
 		          若陳列櫃位較多時，請向下滑動
 		        </Text>
-				<ImageX value='p' />
+				<ImageX key='i2-0' value={districtEqual} />
 				{ brandImage }
 			</ScrollView>
 		)

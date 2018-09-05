@@ -6,7 +6,20 @@ const ImageX = ({ value }) => (
 	<View>
 	
     	{
-			value == 'p'? <Image style={imageX.image} source={ require('../image/p/position.png') } />: 
+			value == 'B'? <Image style={imageX.image} source={ require('../image/p/position-B.png') } />: 
+			value == 'C'? <Image style={imageX.image} source={ require('../image/p/position-C.png') } />: 
+			value == 'D'? <Image style={imageX.image} source={ require('../image/p/position-D.png') } />: 
+			value == 'E'? <Image style={imageX.image} source={ require('../image/p/position-E.png') } />: 
+			value == 'F'? <Image style={imageX.image} source={ require('../image/p/position-F.png') } />: 
+			value == 'G'? <Image style={imageX.image} source={ require('../image/p/position-G.png') } />: 
+			value == 'H'? <Image style={imageX.image} source={ require('../image/p/position-H.png') } />: 
+			value == 'I'? <Image style={imageX.image} source={ require('../image/p/position-I.png') } />: 
+			value == 'L'? <Image style={imageX.image} source={ require('../image/p/position-L.png') } />: 
+			value == 'BF'? <Image style={imageX.image} source={ require('../image/p/position-BF.png') } />: 
+			value == 'CF'? <Image style={imageX.image} source={ require('../image/p/position-CF.png') } />: 
+			value == 'CDEL'? <Image style={imageX.image} source={ require('../image/p/position-CDEL.png') } />: 
+			value == 'DI'? <Image style={imageX.image} source={ require('../image/p/position-DI.png') } />: 
+			value == 'BH'? <Image style={imageX.image} source={ require('../image/p/position-BH.png') } />: 
 			value == 'B1'? <Image style={imageX.image} source={ require('../image/p/position-B-B1.png') } />:
 			value == 'B2'? <Image style={imageX.image} source={ require('../image/p/position-B-B2.png') } />:
 			value == 'B4'? <Image style={imageX.image} source={ require('../image/p/position-B-B4.png') } />:
