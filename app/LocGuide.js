@@ -55,18 +55,21 @@ export default class LocGuide extends Component {
     this.setState({
       started: '√',
     });
+    console.log("onSpeechStart")
   }
 
   onSpeechRecognized(e) {
     this.setState({
       recognized: '√',
     });
+    console.log("onSpeechRecognized")
   }
 
   onSpeechEnd(e) {
     this.setState({
       end: '√',
     });
+    console.log("onSpeechEnd")
     this.setBrandList()
   }
 
@@ -74,27 +77,32 @@ export default class LocGuide extends Component {
     this.setState({
       error: JSON.stringify(e.error),
     });
+    console.log("onSpeechError")
   }
 
   onSpeechResults(e) {
     this.setState({
       results: e.value,
     });
+    console.log("onSpeechResults:", e.value.toString())
   }
 
   onSpeechPartialResults(e) {
     this.setState({
       partialResults: e.value,
     });
+    console.log("onSpeechPartialResults:", e.value.toString())
   }
 
   onSpeechVolumeChanged(e) {
     this.setState({
       pitch: e.value,
     });
+    console.log("onSpeechVolumeChanged")
   }
 
   async _startRecognizing(e) {
+    console.log("_startRecognizing")
     this.setState({
       recognized: '',
       pitch: '',
@@ -112,6 +120,7 @@ export default class LocGuide extends Component {
   }
 
   async _stopRecognizing(e) {
+    console.log("_stopRecognizing")
     try {
       await Voice.stop();
     } catch (e) {
@@ -120,6 +129,7 @@ export default class LocGuide extends Component {
   }
 
   async _cancelRecognizing(e) {
+    console.log("_cancelRecognizing")
     try {
       await Voice.cancel();
     } catch (e) {
@@ -128,6 +138,7 @@ export default class LocGuide extends Component {
   }
 
   async _destroyRecognizer(e) {
+    console.log("_destroyRecognizer")
     try {
       await Voice.destroy();
     } catch (e) {
@@ -162,6 +173,7 @@ export default class LocGuide extends Component {
     if (end == '') return
     let brand = results[0]
     console.log("select sqlite", results, partialResults)
+    console.log("toString: ", results.toString(), partialResults.toString())
     
     db.transaction((tx) => {
       tx.executeSql('SELECT district, brand, districtEqual, blockEqual ' 
