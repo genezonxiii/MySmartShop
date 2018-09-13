@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   Alert,
   Platform,
+  StyleSheet,
 } from 'react-native';
 
 import Voice from 'react-native-voice';
@@ -41,6 +42,9 @@ export default class LocGuide extends Component {
     Voice.onSpeechVolumeChanged = this.onSpeechVolumeChanged.bind(this);
     this.setBrandList = this.setBrandList.bind(this)
     this.navigate = this.navigate.bind(this)
+    this.voiceTrigger = this.voiceTrigger.bind(this)
+    this._startRecognizing = this._startRecognizing.bind(this)
+    this._stopRecognizing = this._stopRecognizing.bind(this)
   }
 
   componentWillUnmount() {
@@ -140,10 +144,24 @@ export default class LocGuide extends Component {
     });
   }
 
+  voiceTrigger() {
+    let { started } = this.state
+    if (started === '') {
+      this._startRecognizing()
+    } else {
+      this._stopRecognizing()
+      this.setState({
+        started: '',
+      })
+    }
+  }
+
   setBrandList() {
-    let { end, partialResults } = this.state
+    let { end, partialResults, results } = this.state
+    console.log("SetBrandList")
     if (end == '') return
-    let brand = partialResults[0]
+    let brand = results[0]
+    console.log("select sqlite", results, partialResults)
     
     db.transaction((tx) => {
       tx.executeSql('SELECT district, brand, districtEqual, blockEqual ' 
@@ -155,7 +173,7 @@ export default class LocGuide extends Component {
           let row = results.rows.item(i);
           brandList.push(row);
         }
-
+        console.log("brandList:", brandList)
         this.setState({
           brandList: brandList,
         })
@@ -209,9 +227,57 @@ export default class LocGuide extends Component {
             }):undefined
           }
         </View>
+        <View>
+              <Text
+                style={styles.stat}>
+                {`Started: ${this.state.started}`}
+              </Text>
+              <Text
+                style={styles.stat}>
+                {`Recognized: ${this.state.recognized}`}
+              </Text>
+              <Text
+                style={styles.stat}>
+                {`Pitch: ${this.state.pitch}`}
+              </Text>
+              <Text
+                style={styles.stat}>
+                {`Error: ${this.state.error}`}
+              </Text>
+              <Text
+                style={styles.stat}>
+                Results
+              </Text>
+              {this.state.results.map((result, index) => {
+                return (
+                  <Text
+                    key={`result-${index}`}
+                    style={styles.stat}>
+                    {result}
+                  </Text>
+                )
+              })}
+              <Text
+                style={styles.stat}>
+                Partial Results
+              </Text>
+              {this.state.partialResults.map((result, index) => {
+                return (
+                  <Text
+                    key={`partial-result-${index}`}
+                    style={styles.stat}>
+                    {result}
+                  </Text>
+                )
+              })}
+              <Text
+                style={styles.stat}>
+                {`End: ${this.state.end}`}
+              </Text>
+        </View>
         <View style={voice.buttonContainer}>
           <TouchableHighlight 
-            onPress={this._startRecognizing.bind(this)} 
+            onPress={this.voiceTrigger} 
             underlayColor={'#dddddd'}>
             <Image
               style={voice.button}
@@ -223,3 +289,38 @@ export default class LocGuide extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  button: {
+    width: 50,
+    height: 50,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  action: {
+    textAlign: 'center',
+    color: '#0000FF',
+    marginVertical: 5,
+    fontWeight: 'bold',
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+  stat: {
+    textAlign: 'center',
+    color: '#B0171F',
+    marginBottom: 1,
+  },
+});
+
