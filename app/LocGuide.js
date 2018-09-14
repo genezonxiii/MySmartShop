@@ -32,7 +32,6 @@ export default class LocGuide extends Component {
       results: [],
       partialResults: [],
       brandList: [],
-      finalResults: [],
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
@@ -44,6 +43,7 @@ export default class LocGuide extends Component {
     this.setBrandList = this.setBrandList.bind(this)
     this.navigate = this.navigate.bind(this)
     this.voiceTrigger = this.voiceTrigger.bind(this)
+    this.resetState = this.resetState.bind(this)
     this._startRecognizing = this._startRecognizing.bind(this)
     this._stopRecognizing = this._stopRecognizing.bind(this)
   }
@@ -119,7 +119,6 @@ export default class LocGuide extends Component {
       results: [],
       partialResults: [],
       end: '',
-      finalResults: [],
     });
     try {
       await Voice.start('zh-TW');
@@ -164,6 +163,20 @@ export default class LocGuide extends Component {
     });
   }
 
+  resetState() {
+    this.state = {
+      recognized: '',
+      pitch: '',
+      error: '',
+      end: '',
+      started: '',
+      results: [],
+      partialResults: [],
+      brandList: [],
+      finalResults: [],
+    };
+  }
+
   voiceTrigger() {
     let { started } = this.state
     if (started === '') {
@@ -181,10 +194,19 @@ export default class LocGuide extends Component {
     console.log("SetBrandList")
     if (end == '') return
     let brand = []
+
+    //取資料較多的作為brand查詢條件
+    //finalResults則相反
     if (Platform.OS === 'ios') {
       brand = partialResults
+      this.setState({
+        finalResults: results
+      })
     } if (Platform.OS === 'android') {
       brand = results
+      this.setState({
+        finalResults: partialResults
+      })
     }
     console.log("select sqlite", results, partialResults)
     console.log("toString: ", results.toString(), partialResults.toString())
@@ -221,6 +243,7 @@ export default class LocGuide extends Component {
 
     if (brandList.length > 0) {
       navigate('BlockViewer', { brand: brandList })
+      this.resetState()
     } else {
       Alert.alert('提示', '無法確認您要尋找的品牌櫃位')
     }
@@ -241,7 +264,7 @@ export default class LocGuide extends Component {
               讀取中...
             </Text>:undefined
           }
-          { end !== '' && finalResults.length > 0?
+          { started !== ''?
             <Text
               style={voice.stat}>
               辨識結果：
