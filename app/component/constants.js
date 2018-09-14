@@ -1,4 +1,4 @@
-export const HOST_SERVER = 'http://192.168.123.102:8080/SmartShop/';
+export const HOST_SERVER = 'http://61.218.8.55/SmartShop/';
 export const GOOGLE_DRIVE = 'https://drive.google.com/uc?id=';
 
 export const REQUIRED_ACCOUNT_ID = '帳號必填'

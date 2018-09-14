@@ -32,6 +32,7 @@ export default class LocGuide extends Component {
       results: [],
       partialResults: [],
       brandList: [],
+      finalResults: [],
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
@@ -70,7 +71,9 @@ export default class LocGuide extends Component {
       end: '√',
     });
     console.log("onSpeechEnd")
-    this.setBrandList()
+    if (Platform.OS === 'ios') {
+      this.setBrandList()
+    }
   }
 
   onSpeechError(e) {
@@ -83,13 +86,18 @@ export default class LocGuide extends Component {
   onSpeechResults(e) {
     this.setState({
       results: e.value,
+      finalResults: Platform.OS === 'ios'?e.value:[],
     });
+    if (Platform.OS === 'android') {
+      this.setBrandList()
+    }
     console.log("onSpeechResults:", e.value.toString())
   }
 
   onSpeechPartialResults(e) {
     this.setState({
       partialResults: e.value,
+      finalResults: Platform.OS === 'android'?e.value:[],
     });
     console.log("onSpeechPartialResults:", e.value.toString())
   }
@@ -110,7 +118,8 @@ export default class LocGuide extends Component {
       started: '',
       results: [],
       partialResults: [],
-      end: ''
+      end: '',
+      finalResults: [],
     });
     try {
       await Voice.start('zh-TW');
@@ -171,14 +180,25 @@ export default class LocGuide extends Component {
     let { end, partialResults, results } = this.state
     console.log("SetBrandList")
     if (end == '') return
-    let brand = results[0]
+    let brand = []
+    if (Platform.OS === 'ios') {
+      brand = partialResults
+    } if (Platform.OS === 'android') {
+      brand = results
+    }
     console.log("select sqlite", results, partialResults)
     console.log("toString: ", results.toString(), partialResults.toString())
+
+    let str_in = brand.map((result, index)=> '"' + result + '"').toString()
+    let str_like = brand.map((result, index)=> 'brandEqual like "%' + result + '%"').toString().replace(/,/g, " or ")
+    console.log("IN: ", str_in)
+    console.log("LIKE: ", str_like)
     
     db.transaction((tx) => {
       tx.executeSql('SELECT district, brand, districtEqual, blockEqual ' 
-        + 'FROM tb_position where brand=? or brandEqual like ? '
-        + 'group by district, brand, districtEqual, blockEqual', [brand, '%' + brand + '%'], (tx, results) => {
+        + 'FROM tb_position where brand in (' + str_in + ') '
+        + ' or (' + str_like + ')'
+        + 'group by district, brand, districtEqual, blockEqual', [], (tx, results) => {
         var len = results.rows.length;
         let brandList = []
         for (let i = 0; i < len; i++) {
@@ -207,7 +227,7 @@ export default class LocGuide extends Component {
   }
 
   render() {
-    let { partialResults, started, end, recognized } = this.state
+    let { finalResults, started, end, recognized } = this.state
     return (
       <View style={voice.pageContainer}>
         <View style={voice.container}>
@@ -221,17 +241,17 @@ export default class LocGuide extends Component {
               讀取中...
             </Text>:undefined
           }
-          { end !== '' && partialResults.length > 0?
+          { end !== '' && finalResults.length > 0?
             <Text
               style={voice.stat}>
               辨識結果：
             </Text>:undefined
           }
-          { end !== '' && partialResults.length > 0?
-            partialResults.map((result, index) => {
+          { end !== '' && finalResults.length > 0?
+            finalResults.map((result, index) => {
               return (
                 <Text
-                  key={`partial-result-${index}`}
+                  key={`final-result-${index}`}
                   style={voice.result}>
                   {result}
                 </Text>
