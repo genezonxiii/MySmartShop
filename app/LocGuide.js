@@ -56,21 +56,18 @@ export default class LocGuide extends Component {
     this.setState({
       started: '√',
     });
-    console.log("onSpeechStart")
   }
 
   onSpeechRecognized(e) {
     this.setState({
       recognized: '√',
     });
-    console.log("onSpeechRecognized")
   }
 
   onSpeechEnd(e) {
     this.setState({
       end: '√',
     });
-    console.log("onSpeechEnd")
     if (Platform.OS === 'ios') {
       this.setBrandList()
     }
@@ -80,7 +77,6 @@ export default class LocGuide extends Component {
     this.setState({
       error: JSON.stringify(e.error),
     });
-    console.log("onSpeechError")
   }
 
   onSpeechResults(e) {
@@ -91,7 +87,6 @@ export default class LocGuide extends Component {
     if (Platform.OS === 'android') {
       this.setBrandList()
     }
-    console.log("onSpeechResults:", e.value.toString())
   }
 
   onSpeechPartialResults(e) {
@@ -99,18 +94,15 @@ export default class LocGuide extends Component {
       partialResults: e.value,
       finalResults: Platform.OS === 'android'?e.value:[],
     });
-    console.log("onSpeechPartialResults:", e.value.toString())
   }
 
   onSpeechVolumeChanged(e) {
     this.setState({
       pitch: e.value,
     });
-    console.log("onSpeechVolumeChanged")
   }
 
   async _startRecognizing(e) {
-    console.log("_startRecognizing")
     this.setState({
       recognized: '',
       pitch: '',
@@ -128,7 +120,6 @@ export default class LocGuide extends Component {
   }
 
   async _stopRecognizing(e) {
-    console.log("_stopRecognizing")
     try {
       await Voice.stop();
     } catch (e) {
@@ -137,7 +128,6 @@ export default class LocGuide extends Component {
   }
 
   async _cancelRecognizing(e) {
-    console.log("_cancelRecognizing")
     try {
       await Voice.cancel();
     } catch (e) {
@@ -146,7 +136,6 @@ export default class LocGuide extends Component {
   }
 
   async _destroyRecognizer(e) {
-    console.log("_destroyRecognizer")
     try {
       await Voice.destroy();
     } catch (e) {
@@ -191,12 +180,9 @@ export default class LocGuide extends Component {
 
   setBrandList() {
     let { end, partialResults, results } = this.state
-    console.log("SetBrandList")
     if (end == '') return
     let brand = []
 
-    //取資料較多的作為brand查詢條件
-    //finalResults則相反
     if (Platform.OS === 'ios') {
       brand = partialResults
       this.setState({
@@ -208,13 +194,9 @@ export default class LocGuide extends Component {
         finalResults: partialResults
       })
     }
-    console.log("select sqlite", results, partialResults)
-    console.log("toString: ", results.toString(), partialResults.toString())
 
     let str_in = brand.map((result, index)=> '"' + result + '"').toString()
     let str_like = brand.map((result, index)=> 'brandEqual like "%' + result + '%"').toString().replace(/,/g, " or ")
-    console.log("IN: ", str_in)
-    console.log("LIKE: ", str_like)
     
     db.transaction((tx) => {
       tx.executeSql('SELECT district, brand, districtEqual, blockEqual ' 
@@ -264,7 +246,7 @@ export default class LocGuide extends Component {
               讀取中...
             </Text>:undefined
           }
-          { started !== ''?
+          { end !== '' && finalResults.length > 0?
             <Text
               style={voice.stat}>
               辨識結果：
@@ -282,54 +264,6 @@ export default class LocGuide extends Component {
             }):undefined
           }
         </View>
-        <View>
-              <Text
-                style={styles.stat}>
-                {`Started: ${this.state.started}`}
-              </Text>
-              <Text
-                style={styles.stat}>
-                {`Recognized: ${this.state.recognized}`}
-              </Text>
-              <Text
-                style={styles.stat}>
-                {`Pitch: ${this.state.pitch}`}
-              </Text>
-              <Text
-                style={styles.stat}>
-                {`Error: ${this.state.error}`}
-              </Text>
-              <Text
-                style={styles.stat}>
-                Results
-              </Text>
-              {this.state.results.map((result, index) => {
-                return (
-                  <Text
-                    key={`result-${index}`}
-                    style={styles.stat}>
-                    {result}
-                  </Text>
-                )
-              })}
-              <Text
-                style={styles.stat}>
-                Partial Results
-              </Text>
-              {this.state.partialResults.map((result, index) => {
-                return (
-                  <Text
-                    key={`partial-result-${index}`}
-                    style={styles.stat}>
-                    {result}
-                  </Text>
-                )
-              })}
-              <Text
-                style={styles.stat}>
-                {`End: ${this.state.end}`}
-              </Text>
-        </View>
         <View style={voice.buttonContainer}>
           <TouchableHighlight 
             onPress={this.voiceTrigger} 
@@ -344,38 +278,3 @@ export default class LocGuide extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  button: {
-    width: 50,
-    height: 50,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  action: {
-    textAlign: 'center',
-    color: '#0000FF',
-    marginVertical: 5,
-    fontWeight: 'bold',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  stat: {
-    textAlign: 'center',
-    color: '#B0171F',
-    marginBottom: 1,
-  },
-});
-
