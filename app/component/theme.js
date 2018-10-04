@@ -238,8 +238,15 @@ const mains = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 250,
+    height: 200,
   },
+  topContainer: {
+    flex: 1, 
+    paddingBottom: 5,
+  },
+  bottomContainer: {
+    flex: 1,
+  }
 })
 
 const productViewers = StyleSheet.create({
