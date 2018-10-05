@@ -33,7 +33,7 @@ export default class Privacy extends Component {
 	    return (
 	    <View style={privacys.container}>
 			<WebView
-				source={{uri: 'https://github.com/facebook/react-native'}}
+				source={{uri: 'http://sbi1.cdri.org.tw/shopmodel/privacy.jsp'}}
 				style={privacys.web}
 			/>
 			<CheckBox 
