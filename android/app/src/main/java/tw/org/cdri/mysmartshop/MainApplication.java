@@ -1,4 +1,4 @@
-package com.mysmartshop;
+package tw.org.cdri.mysmartshop;
 
 import android.app.Application;
 
