@@ -32,6 +32,14 @@ class ProductScanner extends Component {
 			productId = 2
 		} else if (data == 'http://en.m.wikipedia.org') {
 			productId = 3
+		} else if (data == 'BC46012C-D2EA-3015-9577-E25D0CCAB172') {
+			productId = 4
+		} else if (data == '0F55E80D-543B-3EB2-AF2F-1964BE7DC2AF') {
+			productId = 5
+		} else if (data == 'CA3D6A58-2E20-345E-A465-4574E75A231F') {
+			productId = 6
+		} else if (data == '477F29A3-C663-3E05-9C8F-AA233223E211') {
+			productId = 7
 		}
 		return productId
 	}

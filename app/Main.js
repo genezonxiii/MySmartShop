@@ -34,7 +34,6 @@ class Main extends Component {
 		'1igbav5WDitPyjKOjUTdYmBMmipQ2Pm_f','1UjY6JoNcCoefxzITpnxyFNP4wGVTkhRO',
 		'14FYz8PjCkVPGwnn8Zb4Bg0fxYUIFgaeZ']
 		let index = Math.floor(Math.random()*image.length)
-		console.log(index);
 		this.setState({
 			uri: GOOGLE_DRIVE+image[index]
 		})

@@ -88,16 +88,6 @@ export default class ProductViewer extends Component {
               {product.name}
             </Text>
           </View>
-          <View style={productViewers.video}>
-            <VideoPlayer
-              endWithThumbnail
-              thumbnail={{ uri: this.state.thumbnailUrl }}
-              video={{ uri: this.state.videoUrl }}
-              videoWidth={this.state.video.width}
-              videoHeight={this.state.video.height}
-              ref={r => this.player = r}
-            />
-          </View> 
           <Text 
             style={productViewers.directionInfoP}>
             {product.description}
