@@ -1,8 +1,10 @@
-package com.mysmartshop;
+package tw.org.cdri.mysmartshop;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+
+import tw.org.cdri.mysmartshop.BuildConfig;
 import com.wenkesj.voice.VoicePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
