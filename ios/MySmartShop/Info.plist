@@ -44,7 +44,6 @@
 	<string>允許使用麥克風功能</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>允許使用語音辨識功能</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
 	<key>NSCalendarsUsageDescription</key>
 	<string>允許使用日曆功能</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
@@ -53,6 +52,7 @@
 	<string>允許使用媒體功能</string>
 	<key>NSMotionUsageDescription</key>
 	<string>允許使用運動功能</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
