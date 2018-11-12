@@ -238,7 +238,7 @@ const mains = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 200,
+    height: '80%',
   },
   topContainer: {
     flex: 1, 
