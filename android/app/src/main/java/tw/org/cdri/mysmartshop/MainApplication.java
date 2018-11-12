@@ -3,6 +3,7 @@ package tw.org.cdri.mysmartshop;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.zmxv.RNSound.RNSoundPackage;
 import com.wenkesj.voice.VoicePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -35,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
           new ReactVideoPackage(),
           new LinearGradientPackage(),
           new VoicePackage(),
+          new RNSoundPackage(),
           new MainReactPackage()
       );
     }

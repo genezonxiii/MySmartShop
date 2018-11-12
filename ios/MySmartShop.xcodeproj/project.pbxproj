@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -58,6 +57,7 @@
 		E8AF9CC54B874B099BA95EE8 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B7B102FA44219AD663D9F /* Entypo.ttf */; };
 		EDE9844BB7F44880AF9632E5 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C55D382E1245FDBB2268E2 /* EvilIcons.ttf */; };
 		F9F5E024558D457F9D5BDA62 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F239148CB1470B8CEBB571 /* libSQLite.a */; };
+		32BFFC3AA9C4425982B0DEB7 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BA7F27EC3647F8A94BB775 /* libRNSound.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -453,6 +453,8 @@
 		DFCAE03544F44467A1197EB0 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F0F147EE54D442F388C318FA /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		F1C55D382E1245FDBB2268E2 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		7480B7BFCD144FA787E51DC5 /* RNSound.xcodeproj */ = {isa = PBXFileReference; name = "RNSound.xcodeproj"; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		31BA7F27EC3647F8A94BB775 /* libRNSound.a */ = {isa = PBXFileReference; name = "libRNSound.a"; path = "libRNSound.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +491,7 @@
 				F9F5E024558D457F9D5BDA62 /* libSQLite.a in Frameworks */,
 				24AEE3B207D34ED9983233F9 /* libsqlite3.0.tbd in Frameworks */,
 				278CEDA5BB9944868F2C9276 /* libVoice.a in Frameworks */,
+				32BFFC3AA9C4425982B0DEB7 /* libRNSound.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +777,7 @@
 				49E8178CCE974D49A60C4488 /* BVLinearGradient.xcodeproj */,
 				80D8DB6D24A14B0AB55FBADA /* SQLite.xcodeproj */,
 				4CAC2240D9B2419999A3A31D /* Voice.xcodeproj */,
+				7480B7BFCD144FA787E51DC5 /* RNSound.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1509,12 +1513,14 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = MySmartShopTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1547,12 +1553,14 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = MySmartShopTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1588,6 +1596,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = MySmartShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1621,6 +1630,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = MySmartShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1658,11 +1668,13 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = "MySmartShop-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1704,11 +1716,13 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = "MySmartShop-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1749,11 +1763,13 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = "MySmartShop-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1794,11 +1810,13 @@
 					"$(SRCROOT)..\node_modules\neact-native-linear-gradientBVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 					"$(SRCROOT)..\node_modules\neact-native-voiceiosVoice",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 				INFOPLIST_FILE = "MySmartShop-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
