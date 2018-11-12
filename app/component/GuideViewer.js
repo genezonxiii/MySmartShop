@@ -19,7 +19,7 @@ export default class GuideViewer extends Component {
   }
 
   render() {
-    const { screenProps: { entrypointid, guide, transit, viewerIndex } } = this.props
+    const { screenProps: { entrypointid, guide, transit, play, viewerIndex } } = this.props
     guideList = guide.filter((element, index )=> index == viewerIndex).map((guide, i) => {
       return (
         <View 
@@ -53,13 +53,20 @@ export default class GuideViewer extends Component {
         </ScrollView>
         <View style={guideViewers.btnRow}>
           <Button 
+            btnText='播放'
+            onPress={play}
+            linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
+            underlayColor={'#8B7F73'}
+          />
+        </View>
+        <View style={guideViewers.btnRow}>
+          <Button 
             btnText='下一步'
             onPress={transit}
             linearColor={['#CBC6BA', '#85786C', '#C9C4B8']}
             underlayColor={'#8B7F73'}
           />
         </View>
-
       </View>
     )
   }

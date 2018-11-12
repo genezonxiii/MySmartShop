@@ -100,9 +100,9 @@ const guideViewers = StyleSheet.create({
   },
   btnRow: {
     backgroundColor: '#3f3f3f',
-    paddingTop: 15,
+    paddingTop: 5,
     paddingRight: 20,
-    paddingBottom: 15,
+    paddingBottom: 5,
     paddingLeft: 20,
     bottom: 0,
     width: '100%',

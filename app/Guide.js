@@ -5,6 +5,8 @@ import GuideViewer from './component/GuideViewer'
 
 import { guides } from './component/theme'
 
+var Sound = require('react-native-sound');
+
 var SQLite = require('react-native-sqlite-storage')
 var db = undefined
 if (Platform.OS === 'ios') {
@@ -21,11 +23,13 @@ class Guide extends Component {
 			guide: [],
 			entrypointid: 1,
 			viewerIndex: 0,
+			sound: '',
 		}
 		this.loadEntry = this.loadEntry.bind(this)
 		this.loadGuide = this.loadGuide.bind(this)
 		this.entryChange = this.entryChange.bind(this)
 		this.transit = this.transit.bind(this)
+		this.play = this.play.bind(this)
 		this.loadEntry()
 		this.loadGuide(this.state.entrypointid)
 	}
@@ -64,13 +68,16 @@ class Guide extends Component {
 
 				this.setState({
 					guide: guide,
+					sound: guide[0].sound,
 				})
+
+				this.playSound(guide[0].sound)
 			});
 		});    
 	}
 
 	entryChange(text) {
-		let { entrypointid } = this.state
+		let { entrypointid, guide } = this.state
 		this.setState({
 			entrypointid: text,
 			viewerIndex: 0,
@@ -84,8 +91,38 @@ class Guide extends Component {
 			Alert.alert('提示', '導航結束！')
 			viewerIndex = 0
 		} 
+
 		this.setState({
-			viewerIndex: viewerIndex
+			viewerIndex: viewerIndex,
+			sound: guide[viewerIndex].sound,
+		})
+
+		this.playSound(guide[viewerIndex].sound)
+	}
+
+	play(){
+		this.playSound(this.state.sound)
+	}
+
+	async playSound (filename) {
+		await this.loadSound(filename)
+		this.player.play((success) => {
+			if (!success) {
+				this.player.reset()        
+			}
+			this.player.release()
+		})
+	}
+
+	loadSound (filename) {
+		return new Promise((resolve, reject) => {
+			Sound.setCategory('Playback', true)
+			this.player = new Sound(filename, undefined, (error) => {
+				if (error) {
+					reject(error)
+				}
+				resolve()
+			})
 		})
 	}
 
@@ -103,6 +140,7 @@ class Guide extends Component {
 			          entrypointid: entrypointid,
 			          guide: guide,
 			          transit: this.transit,
+			          play: this.play,
 			          viewerIndex: viewerIndex
 			        }} />
 			</View>
