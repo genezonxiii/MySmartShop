@@ -117,7 +117,7 @@ class Guide extends Component {
 	loadSound (filename) {
 		return new Promise((resolve, reject) => {
 			Sound.setCategory('Playback', true)
-			this.player = new Sound(filename, undefined, (error) => {
+			this.player = new Sound(filename, Sound.MAIN_BUNDLE, (error) => {
 				if (error) {
 					reject(error)
 				}
