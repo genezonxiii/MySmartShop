@@ -15,9 +15,9 @@ import { voice } from './component/theme'
 var SQLite = require('react-native-sqlite-storage')
 var db = undefined
 if (Platform.OS === 'ios') {
-  db = SQLite.openDatabase({name: 'guide.db', createFromLocation: 1})
-} if (Platform.OS === 'android') {
-  db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})  
+  db = SQLite.openDatabase({name: 'guide.181116.v1', createFromLocation: 1})
+} if (Platform.OS === 'android')
+  db = SQLite.openDatabase({name: 'guide.181116.v1', createFromLocation: '~guide.db'})
 }
 
 export default class LocGuide extends Component {
