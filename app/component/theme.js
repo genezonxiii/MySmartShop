@@ -106,7 +106,16 @@ const guideViewers = StyleSheet.create({
     paddingLeft: 20,
     bottom: 0,
     width: '100%',
-  }
+  },
+  brand: {
+    // color: '#444',
+    // fontSize: 16,
+    textAlign: 'center',
+    color: '#967C4C',
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });
 
 const privacys = StyleSheet.create({

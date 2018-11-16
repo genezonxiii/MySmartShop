@@ -4,6 +4,7 @@ import {
   View,
   ScrollView,
   Image,
+  Linking,
 } from 'react-native';
 
 import Button from './Button';
@@ -36,6 +37,21 @@ export default class GuideViewer extends Component {
             <Text 
               style={guideViewers.directionInfoP}>
               {guide.description}
+            </Text>
+            <Text 
+              style={guideViewers.brand}
+              onPress={() => Linking.openURL(`https://meet.eslite.com/tw/tc/cooperationbrand/${guide.brandurl1}`)}>
+              {guide.brand1}
+            </Text>
+            <Text 
+              style={guideViewers.brand}
+              onPress={() => Linking.openURL(`https://meet.eslite.com/tw/tc/cooperationbrand/${guide.brandurl2}`)}>
+              {guide.brand2}
+            </Text>
+            <Text 
+              style={guideViewers.brand}
+              onPress={() => Linking.openURL(`https://meet.eslite.com/tw/tc/cooperationbrand/${guide.brandurl3}`)}>
+              {guide.brand3}
             </Text>
           </View>
         </View>
