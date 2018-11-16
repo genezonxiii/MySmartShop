@@ -10,9 +10,6 @@ import Button from './Button';
 import { guideViewers } from './theme';
 import { GOOGLE_DRIVE } from './constants';
 
-var SQLite = require('react-native-sqlite-storage')
-var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~guide.db'})
-
 export default class GuideViewer extends Component {
   constructor(props){
     super(props)
