@@ -101,7 +101,7 @@ android {
         applicationId "tw.org.cdri.mysmartshop"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 1
+        versionCode 4
         versionName "1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
