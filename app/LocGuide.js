@@ -11,6 +11,7 @@ import {
 
 import Voice from 'react-native-voice';
 import { voice } from './component/theme'
+import { HOST_SERVER } from './component/constants';
 
 var SQLite = require('react-native-sqlite-storage')
 var db = undefined
@@ -46,6 +47,13 @@ export default class LocGuide extends Component {
     this.resetState = this.resetState.bind(this)
     this._startRecognizing = this._startRecognizing.bind(this)
     this._stopRecognizing = this._stopRecognizing.bind(this)
+    this.writeDB = this.writeDB.bind(this);
+    this.createPosition = this.createPosition.bind(this);
+    this.insertData = this.insertData.bind(this);
+    this.getData = this.getData.bind(this);
+
+    this.writeDB();
+    console.log('Location Guide constructor');
   }
 
   componentWillUnmount() {
@@ -217,6 +225,71 @@ export default class LocGuide extends Component {
         setTimeout(() => this.navigate(), 1000)
       });
     });
+  }
+
+  writeDB() {
+    let url = HOST_SERVER + 'position/list';
+    fetch(url, {  
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      this.createPosition();
+      responseJson.forEach((data) => {
+        this.insertData(data);
+      });
+    })
+  }
+
+  createPosition() {
+    db.transaction((tx) => {
+      tx.executeSql("DROP TABLE IF EXISTS Position");
+
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS Position( " +
+          "id INTEGER PRIMARY KEY NOT NULL, " +
+          "block TEXT NOT NULL" +
+          ");",
+          [],
+          (tx, results) => {
+            console.log(results);
+          }
+      );
+    })
+  }
+
+  insertData(data) {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "INSERT INTO Position (id, block) VALUES (?,?) ",
+          [data.id, data.block],
+          (tx, results) => {
+            console.log(results);
+          }
+      );
+    })
+  }
+
+  getData(id) {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "SELECT * FROM Position where id = ? ",
+          [id],
+          (tx, results) => {
+            console.log('get Data');
+            console.log(results);
+            for (let i = 0; i < results.rows.length; i++) {
+              let row = results.rows.item(i);
+              console.log(row);
+            }
+          }
+      );
+    })
   }
 
   navigate() {
