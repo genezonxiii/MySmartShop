@@ -48,12 +48,11 @@ export default class LocGuide extends Component {
     this._startRecognizing = this._startRecognizing.bind(this)
     this._stopRecognizing = this._stopRecognizing.bind(this)
     this.writeDB = this.writeDB.bind(this);
-    this.createPosition = this.createPosition.bind(this);
-    this.insertData = this.insertData.bind(this);
+    this.createTbPosition = this.createTbPosition.bind(this);
+    this.insertTbPosition = this.insertTbPosition.bind(this);
     this.getData = this.getData.bind(this);
 
     this.writeDB();
-    console.log('Location Guide constructor');
   }
 
   componentWillUnmount() {
@@ -238,38 +237,43 @@ export default class LocGuide extends Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
-      this.createPosition();
+      this.createTbPosition();
       responseJson.forEach((data) => {
-        this.insertData(data);
+        this.insertTbPosition(data);
       });
     })
   }
 
-  createPosition() {
+  createTbPosition() {
     db.transaction((tx) => {
-      tx.executeSql("DROP TABLE IF EXISTS Position");
+      tx.executeSql("DROP TABLE IF EXISTS tb_position");
 
       tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS Position( " +
+        "CREATE TABLE IF NOT EXISTS tb_position( " +
           "id INTEGER PRIMARY KEY NOT NULL, " +
-          "block TEXT NOT NULL" +
+          "district TEXT NOT NULL, " +
+          "block TEXT NOT NULL, " +
+          "brand TEXT NOT NULL, " +
+          "districtEqual TEXT, " +
+          "blockEqual TEXT, " +
+          "brandEqual TEXT " +
           ");",
           [],
           (tx, results) => {
-            console.log(results);
+            console.log("Create Table Complete");
           }
       );
     })
   }
 
-  insertData(data) {
+  insertTbPosition(data) {
     db.transaction((tx) => {
       tx.executeSql(
-        "INSERT INTO Position (id, block) VALUES (?,?) ",
-          [data.id, data.block],
+        "INSERT INTO tb_position (id, brand, district, block, brandEqual, districtEqual, blockEqual) " + 
+        "VALUES (?,?,?,?,?,?,?) ",
+          [data.id, data.brand, data.district, data.block, data.brandEqual, data.districtEqual, data.blockEqual],
           (tx, results) => {
-            console.log(results);
+            // console.log(`ID:${results.insertId} and count:${results.rowsAffected}`);
           }
       );
     })
@@ -278,15 +282,19 @@ export default class LocGuide extends Component {
   getData(id) {
     db.transaction((tx) => {
       tx.executeSql(
-        "SELECT * FROM Position where id = ? ",
+        "SELECT * FROM tb_position where id = ? ",
           [id],
           (tx, results) => {
             console.log('get Data');
-            console.log(results);
             for (let i = 0; i < results.rows.length; i++) {
               let row = results.rows.item(i);
               console.log(row);
             }
+
+            // alternative
+            // results.rows.raw().forEach((row)=>{
+            //   console.log(row);
+            // })
           }
       );
     })
