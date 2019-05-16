@@ -34,7 +34,7 @@ export default class Menu extends Component  {
           onPress={() => this.navigate('Guide')}
         />
         <ImageButton
-          btnText='櫃位'
+          btnText='商品'
           btnImage='Location'
           onPress={() => this.navigate('Location')}
         />

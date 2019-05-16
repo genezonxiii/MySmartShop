@@ -58,7 +58,7 @@ class Guide extends Component {
 
 	loadGuide(entrypointid) {
 		db.transaction((tx) => {
-			tx.executeSql('SELECT * FROM tb_guide where entrypointid=?', [entrypointid], (tx, results) => {
+			tx.executeSql('SELECT * FROM tb_guide where entrypointid=? order by seq', [entrypointid], (tx, results) => {
 				var len = results.rows.length;
 				let guide = []
 				for (let i = 0; i < len; i++) {
