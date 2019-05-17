@@ -21,7 +21,7 @@ class Guide extends Component {
 		this.state = {
 			entry: [],
 			guide: [],
-			entrypointid: 1,
+			entrypointid: 10,
 			viewerIndex: 0,
 			sound: '',
 		}
