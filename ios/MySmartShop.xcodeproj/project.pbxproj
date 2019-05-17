@@ -1874,7 +1874,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tw.org.cdri.MySmartShop;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.hayashi.MySmartShop;
 				PRODUCT_NAME = MySmartShop;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1908,7 +1908,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tw.org.cdri.MySmartShop;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.hayashi.MySmartShop;
 				PRODUCT_NAME = MySmartShop;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
