@@ -206,10 +206,10 @@ export default class LocGuide extends Component {
     let str_like = brand.map((result, index)=> 'brandEqual like "%' + result + '%"').toString().replace(/,/g, " or ")
     
     db.transaction((tx) => {
-      tx.executeSql('SELECT district, brand, districtEqual, blockEqual ' 
+      tx.executeSql('SELECT district, brand, floor, districtEqual, blockEqual ' 
         + 'FROM tb_position where brand in (' + str_in + ') '
         + ' or (' + str_like + ')'
-        + 'group by district, brand, districtEqual, blockEqual', [], (tx, results) => {
+        + 'group by district, brand, floor, districtEqual, blockEqual', [], (tx, results) => {
         var len = results.rows.length;
         let brandList = []
         for (let i = 0; i < len; i++) {
@@ -251,9 +251,11 @@ export default class LocGuide extends Component {
       tx.executeSql(
         "CREATE TABLE IF NOT EXISTS tb_position( " +
           "id INTEGER PRIMARY KEY NOT NULL, " +
+          "floor TEXT NOT NULL, " +
           "district TEXT NOT NULL, " +
           "block TEXT NOT NULL, " +
           "brand TEXT NOT NULL, " +
+          "floorEqual TEXT, " +
           "districtEqual TEXT, " +
           "blockEqual TEXT, " +
           "brandEqual TEXT " +
@@ -269,9 +271,9 @@ export default class LocGuide extends Component {
   insertTbPosition(data) {
     db.transaction((tx) => {
       tx.executeSql(
-        "INSERT INTO tb_position (id, brand, district, block, brandEqual, districtEqual, blockEqual) " + 
-        "VALUES (?,?,?,?,?,?,?) ",
-          [data.id, data.brand, data.district, data.block, data.brandEqual, data.districtEqual, data.blockEqual],
+        "INSERT INTO tb_position (id, brand, floor, district, block, brandEqual, floorEqual, districtEqual, blockEqual) " + 
+        "VALUES (?,?,?,?,?,?,?,?,?) ",
+          [data.id, data.brand, data.floor, data.district, data.block, data.brandEqual, data.floorEqual, data.districtEqual, data.blockEqual],
           (tx, results) => {
             // console.log(`ID:${results.insertId} and count:${results.rowsAffected}`);
           }
