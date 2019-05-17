@@ -1,4 +1,4 @@
-package tw.org.cdri.mysmartshop;
+package tw.com.hayashi.mysmartshop;
 
 import com.facebook.react.ReactActivity;
 

@@ -98,7 +98,7 @@ android {
     buildToolsVersion "27.0.3"
 
     defaultConfig {
-        applicationId "tw.org.cdri.mysmartshop"
+        applicationId "tw.com.hayashi.mysmartshop"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 4
