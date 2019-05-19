@@ -206,10 +206,10 @@ export default class LocGuide extends Component {
     let str_like = brand.map((result, index)=> 'brandEqual like "%' + result + '%"').toString().replace(/,/g, " or ")
     
     db.transaction((tx) => {
-      tx.executeSql('SELECT district, brand, floor, districtEqual, blockEqual ' 
+      tx.executeSql('SELECT district, brand, floor, block, productName, shopUrl, districtEqual, blockEqual ' 
         + 'FROM tb_position where brand in (' + str_in + ') '
         + ' or (' + str_like + ')'
-        + 'group by district, brand, floor, districtEqual, blockEqual', [], (tx, results) => {
+        + 'group by district, brand, floor, block, productName, shopUrl, districtEqual, blockEqual', [], (tx, results) => {
         var len = results.rows.length;
         let brandList = []
         for (let i = 0; i < len; i++) {
@@ -255,6 +255,8 @@ export default class LocGuide extends Component {
           "district TEXT NOT NULL, " +
           "block TEXT NOT NULL, " +
           "brand TEXT NOT NULL, " +
+          "productName TEXT NULL, " +
+          "shopUrl TEXT NULL, " +
           "floorEqual TEXT, " +
           "districtEqual TEXT, " +
           "blockEqual TEXT, " +
@@ -271,9 +273,9 @@ export default class LocGuide extends Component {
   insertTbPosition(data) {
     db.transaction((tx) => {
       tx.executeSql(
-        "INSERT INTO tb_position (id, brand, floor, district, block, brandEqual, floorEqual, districtEqual, blockEqual) " + 
-        "VALUES (?,?,?,?,?,?,?,?,?) ",
-          [data.id, data.brand, data.floor, data.district, data.block, data.brandEqual, data.floorEqual, data.districtEqual, data.blockEqual],
+        "INSERT INTO tb_position (id, brand, floor, productName, shopUrl, district, block, brandEqual, floorEqual, districtEqual, blockEqual) " + 
+        "VALUES (?,?,?,?,?,?,?,?,?,?,?) ",
+          [data.id, data.brand, data.floor, data.productName, data.shopUrl, data.district, data.block, data.brandEqual, data.floorEqual, data.districtEqual, data.blockEqual],
           (tx, results) => {
             // console.log(`ID:${results.insertId} and count:${results.rowsAffected}`);
           }

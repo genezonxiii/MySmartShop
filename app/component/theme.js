@@ -408,6 +408,12 @@ const blockViewer = StyleSheet.create({
     marginBottom: 5,
     fontSize: 18,
   },
+  shopUrl: {
+    textAlign: 'center',
+    color: 'blue',
+    marginBottom: 5,
+    fontSize: 18,
+  },
   imageContainer: {
 
   },
