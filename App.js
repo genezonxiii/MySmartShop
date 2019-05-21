@@ -45,6 +45,7 @@ const MainStack = StackNavigator(
     initialRouteName: 'Home',
     /* The header config from HomeScreen is now here */
     navigationOptions: {
+      title: `林百貨`,
       headerStyle: {
         backgroundColor: '#967C4C',
       },
