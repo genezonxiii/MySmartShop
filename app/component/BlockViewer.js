@@ -5,6 +5,7 @@ import ImageX from './ImageX'
 import Button from './Button'
 
 import { blockViewer } from './theme'
+import { DEFAULT_LINK_FOR_POSITION } from './constants';
 
 class BlockViewer extends Component {
 	constructor(props) {
@@ -30,7 +31,14 @@ class BlockViewer extends Component {
 					商品名稱：{brand.productName}
 				</Text>
 				<Text key={'t-4-'+index} style={blockViewer.shopUrl}
-					onPress={() => Linking.openURL(brand.shopUrl)}>
+					onPress={() => {
+						if (brand.shopUrl) {
+							Linking.openURL(brand.shopUrl)
+						} else {
+							Linking.openURL(DEFAULT_LINK_FOR_POSITION)
+						}
+					}
+				}>
 					線上商城
 				</Text>
 				<ImageX key={'i1-'+index} value={brand.blockEqual} />

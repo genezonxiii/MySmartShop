@@ -415,7 +415,7 @@ const blockViewer = StyleSheet.create({
     fontSize: 18,
   },
   imageContainer: {
-
+    paddingBottom: 30,
   },
   instructions: {
     textAlign: 'center',
