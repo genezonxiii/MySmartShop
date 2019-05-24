@@ -19,16 +19,6 @@ export default class Menu extends Component  {
     return (
       <View style={menus.container}>
         <ImageButton
-          btnText='登入'
-          btnImage='Login'
-          onPress={() => this.navigate('Login')}
-        />
-        <ImageButton
-          btnText='註冊'
-          btnImage='Register'
-          onPress={() => this.navigate('Privacy')}
-        />
-        <ImageButton
           btnText='導航'
           btnImage='Guide'
           onPress={() => this.navigate('Guide')}
