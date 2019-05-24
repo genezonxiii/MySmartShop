@@ -16,9 +16,9 @@ import { HOST_SERVER } from './component/constants';
 var SQLite = require('react-native-sqlite-storage')
 var db = undefined
 if (Platform.OS === 'ios') {
-  db = SQLite.openDatabase({name: 'guide.181116.v1', createFromLocation: 1})
+  db = SQLite.openDatabase({name: 'guide.db', createFromLocation: 1})
 } if (Platform.OS === 'android') {
-  db = SQLite.openDatabase({name: 'guide.181116.v1', createFromLocation: '~guide.db'})
+  db = SQLite.openDatabase({name: 'guide.190521.v2', createFromLocation: '~guide.db'})
 }
 
 export default class LocGuide extends Component {
