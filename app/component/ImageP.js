@@ -31,6 +31,11 @@ const ImageP = ({ value }) => (
 	        	style={imageButtons.image}
 				source={ require('../image/menuicon_storelocation.png') }
 			/>:			
+	        value == 'About'?		
+	        <Image 
+	        	style={imageButtons.image}
+				source={ require('../image/menuicon_login.png') }
+			/>:			
 	        undefined
     	}
 	

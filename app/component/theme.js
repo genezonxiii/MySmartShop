@@ -426,6 +426,22 @@ const blockViewer = StyleSheet.create({
   },
 })
 
+const about = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  section: {
+    paddingTop: 15,
+    paddingRight: 30,
+    paddingBottom: 15,
+    paddingLeft: 30,    
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+})
+
 export { buttons, menus, guideViewers, 
   inputs, pickers, guides, 
   imageButtons, switchns,
@@ -434,4 +450,5 @@ export { buttons, menus, guideViewers,
   products, 
   productViewers, productScanners,
   imageX, voice, blockViewer,
+  about,
 }

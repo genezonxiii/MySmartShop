@@ -10,6 +10,7 @@ import Privacy from './app/Privacy';
 import LocGuide from './app/LocGuide';
 import BlockViewer from './app/component/BlockViewer';
 import ProductViewer from './app/component/ProductViewer';
+import About from './app/About';
 
 const MainStack = StackNavigator(
   {
@@ -39,6 +40,9 @@ const MainStack = StackNavigator(
     },
     BlockViewer: {
       screen: BlockViewer
+    },
+    About: {
+      screen: About
     },
   },
   {
