@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Alert } from 'react-native'
+import { View, Text, Alert, Linking } from 'react-native'
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 import Button from './Button'
@@ -17,12 +17,10 @@ class ProductScanner extends Component {
 	}
 
 	onRead(e) {
-		let { navigate } = this.props.navigation
-		let productId = this.getProductId(e.data)
-		if (productId != '') {
-			navigate('ProductViewer', {productId: productId})
-		} else {
-			Alert.alert('提示', '無法讀取此特色商品')
+		try {
+			Linking.openURL(e.data);
+		} catch (e) {
+			console.log(e);
 		}
 	}
 

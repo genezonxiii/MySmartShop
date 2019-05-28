@@ -16,7 +16,7 @@ class ProductScan extends Component {
 		return (
 			<ProductScanner 
 				navigation={navigation}
-				topText='請掃描特色商品QR code'
+				topText='請掃描特色商品連結(URL)QR code'
 				btnText='還要再掃'
 				screenProps={{
 		          loginToken: screenProps.loginToken,
