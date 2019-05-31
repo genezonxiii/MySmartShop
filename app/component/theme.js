@@ -440,6 +440,31 @@ const about = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  subtitleText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  contain: {
+    fontSize: 16,
+  },
+  youtube: {
+    textAlign: 'center',
+    color: '#967C4C',
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  imageContainer: {
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  image: {
+    width: '100%',
+    height: 250,
+  },
+  bottomContainer: {
+    flex: 1,
+  }
 })
 
 export { buttons, menus, guideViewers, 

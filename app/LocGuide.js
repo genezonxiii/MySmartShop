@@ -13,13 +13,7 @@ import Voice from 'react-native-voice';
 import { voice } from './component/theme'
 import { HOST_SERVER } from './component/constants';
 
-var SQLite = require('react-native-sqlite-storage')
-var db = undefined
-if (Platform.OS === 'ios') {
-  db = SQLite.openDatabase({name: 'guide.db', createFromLocation: 1})
-} if (Platform.OS === 'android') {
-  db = SQLite.openDatabase({name: 'guide.190521.v2', createFromLocation: '~guide.db'})
-}
+let db = require('./component/Model').getConnection();
 
 export default class LocGuide extends Component {
   constructor(props) {
