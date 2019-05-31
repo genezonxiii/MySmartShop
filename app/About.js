@@ -267,6 +267,14 @@ class About extends Component {
 			      </Text>
 			    </View>
 			    <View style={about.section}>
+					<Text style={about.titleText}>
+			          1-6樓主題規畫
+			        </Text>
+		          <Image 
+		            source={require('./image/floor.png')}
+		            style={about.floor} />
+				</View>
+			    <View style={about.section}>
 			    	<Text style={about.titleText}>
 			          館內品牌故事 精選影片 林聚在一起
 			        </Text>

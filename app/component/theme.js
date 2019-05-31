@@ -458,6 +458,10 @@ const about = StyleSheet.create({
     marginTop: 15,
     marginBottom: 15,
   },
+  floor: {
+    width: '100%',
+    height: 550,
+  },
   image: {
     width: '100%',
     height: 250,
