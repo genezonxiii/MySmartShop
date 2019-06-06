@@ -19,6 +19,7 @@ export default class LocGuide extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      locale: 'zh-TW',
       recognized: '',
       pitch: '',
       error: '',
@@ -45,12 +46,33 @@ export default class LocGuide extends Component {
     this.createTbPosition = this.createTbPosition.bind(this);
     this.insertTbPosition = this.insertTbPosition.bind(this);
     this.getData = this.getData.bind(this);
-
+    this.changeLocaleZHTW = this.changeLocaleZHTW.bind(this); 
+    this.changeLocaleJA = this.changeLocaleJA.bind(this);
+    this.changeLocaleUS = this.changeLocaleUS.bind(this);
+    
     this.writeDB();
   }
 
   componentWillUnmount() {
     Voice.destroy().then(Voice.removeAllListeners);
+  }
+
+  changeLocaleZHTW(){
+    this.setState({
+      locale: 'zh-TW'
+    })
+  }
+
+  changeLocaleJA(){
+    this.setState({
+      locale: 'ja'
+    })
+  }
+
+  changeLocaleUS(){
+    this.setState({
+      locale: 'us'
+    })
   }
 
   onSpeechStart(e) {
@@ -104,6 +126,7 @@ export default class LocGuide extends Component {
   }
 
   async _startRecognizing(e) {
+    let { locale } = this.state;
     this.setState({
       recognized: '',
       pitch: '',
@@ -114,7 +137,7 @@ export default class LocGuide extends Component {
       end: '',
     });
     try {
-      await Voice.start('zh-TW');
+      await Voice.start(locale);
     } catch (e) {
       console.error(e);
     }
