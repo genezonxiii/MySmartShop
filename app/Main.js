@@ -12,6 +12,7 @@ class Main extends Component {
 		this.state = {
 			uri: GOOGLE_DRIVE + '1YmiMsYPbNgVHnhcW1N0Kt4l6k4_12HDv',
 			carousel: [],
+			photo_idx: 0,
 		}
 		this.randomImage = this.randomImage.bind(this)
 		this.writeDB = this.writeDB.bind(this);
@@ -45,17 +46,18 @@ class Main extends Component {
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
-        	uri: GOOGLE_DRIVE + responseJson[1].googleDrive,
+        	uri: GOOGLE_DRIVE + responseJson[0].googleDrive,
         	carousel: responseJson
         })
       })
     }
 
 	randomImage(){
-		let { carousel } = this.state;
-		let index = Math.floor(Math.random()*carousel.length)
+		let { carousel, photo_idx } = this.state;
+		photo_idx = ++photo_idx >= carousel.length?0:photo_idx;
 		this.setState({
-			uri: GOOGLE_DRIVE+carousel[index].googleDrive
+			uri: GOOGLE_DRIVE+carousel[photo_idx].googleDrive,
+			photo_idx: photo_idx
 		})
 	}
 
