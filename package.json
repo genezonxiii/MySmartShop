@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "react": "16.3.1",
-    "react-native": "0.55.4",
+    "react": "16.8.6",
+    "react-native": "0.60.3",
     "react-native-camera": "^1.1.4",
     "react-native-elements": "^0.19.1",
     "react-native-linear-gradient": "^2.4.0",
@@ -22,10 +23,14 @@
     "react-navigation": "^2.0.4"
   },
   "devDependencies": {
-    "babel-jest": "22.4.4",
-    "babel-preset-react-native": "4.0.0",
-    "jest": "22.4.4",
-    "react-test-renderer": "16.3.1"
+    "@babel/core": "^7.5.4",
+    "@babel/runtime": "^7.5.4",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.8.0",
+    "eslint": "^6.0.1",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.55.0",
+    "react-test-renderer": "16.8.6"
   },
   "jest": {
     "preset": "react-native"
