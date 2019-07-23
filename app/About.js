@@ -229,7 +229,7 @@ class About extends Component {
 		            <View style={about.imageContainer}>
 			            <Text 
 			              style={about.contain}>
-			              {data.description}
+			              {data.description}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
 			            </Text>
 		            </View>
 	            </View>
@@ -249,7 +249,7 @@ class About extends Component {
 			          {intro.titleText}{'\n'}{'\n'}
 			        </Text>
 			        <Text numberOfLines={5} style={about.contain}>
-			          {intro.bodyText}
+			          {intro.bodyText}{'\n'}{'\n'}{'\n'}
 			        </Text>
 			      </Text>
 			    </View>
@@ -258,11 +258,11 @@ class About extends Component {
 			        <Text style={about.titleText}>
 			          {history.titleText}{'\n'}{'\n'}
 			        </Text>
-			        <Text numberOfLines={5} style={about.contain}>
+			        <Text style={about.contain}>
 			          {history.bodyText1}{'\n'}{'\n'}
 			        </Text>
-			        <Text numberOfLines={5} style={about.contain}>
-			          {history.bodyText2}
+			        <Text style={about.contain}>
+			          {history.bodyText2}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
 			        </Text>
 			      </Text>
 			    </View>
@@ -276,7 +276,7 @@ class About extends Component {
 				</View>
 			    <View style={about.section}>
 			    	<Text style={about.titleText}>
-			          館內品牌故事 精選影片 林聚在一起
+			          館內品牌故事 精選影片 林聚在一起(品牌故事影音連結){'\n'}
 			        </Text>
 
 		    		{ this.renderViewYoutube() }

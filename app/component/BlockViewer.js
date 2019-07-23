@@ -49,8 +49,8 @@ class BlockViewer extends Component {
 		        <Text style={blockViewer.instructions}>
 		          若陳列櫃位較多時，請向下滑動
 		        </Text>
-				<ImageX key='i2-0' value={districtEqual} />
 				{ brandImage }
+				<ImageX key='i2-0' value={districtEqual} />
 			</ScrollView>
 		)
 	}
