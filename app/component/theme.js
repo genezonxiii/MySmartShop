@@ -449,10 +449,14 @@ const about = StyleSheet.create({
   },
   youtube: {
     textAlign: 'center',
-    color: '#967C4C',
-    marginTop: 10,
+    color: '#fff',
+    paddingTop: 10,
+    paddingBottom: 10,
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  youtubeBox: {
+    marginBottom: 10,
   },
   imageContainer: {
     marginTop: 15,
@@ -468,7 +472,10 @@ const about = StyleSheet.create({
   },
   bottomContainer: {
     flex: 1,
-  }
+  },
+  linearGradient: {
+    borderRadius: 8,
+  },
 })
 
 export { buttons, menus, guideViewers, 

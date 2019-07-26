@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView, Platform, Linking, Image } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient';
 import ComboPicker from './component/Picker'
 import GuideViewer from './component/GuideViewer'
 import { HOST_SERVER, GOOGLE_DRIVE } from './component/constants';
@@ -198,11 +199,19 @@ class About extends Component {
 				<View 
 		          style={about.container} 
 		          key={idx}>
-					<Text 
-		              style={about.youtube}
-		              onPress={() => Linking.openURL(`${data.url}`)}>
-		              {data.name}
-		            </Text>
+		          <View 
+		          	style={about.youtubeBox}>
+					  <LinearGradient 
+					  	colors={['#828282', '#494646', '#393636']}
+					  	locations={[0,0.5,1]}
+					  	style={about.linearGradient}>
+							<Text 
+				              style={about.youtube}
+				              onPress={() => Linking.openURL(`${data.url}`)}>
+				              {data.name}
+				            </Text>
+  						</LinearGradient>
+  				  </View>
 	            </View>
 			)
 		})
@@ -276,7 +285,7 @@ class About extends Component {
 				</View>
 			    <View style={about.section}>
 			    	<Text style={about.titleText}>
-			          館內品牌故事 精選影片 林聚在一起(品牌故事影音連結){'\n'}
+			          館內品牌故事 精選影片 林聚在一起(品牌故事影音觀賞){'\n'}
 			        </Text>
 
 		    		{ this.renderViewYoutube() }
