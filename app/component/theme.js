@@ -246,15 +246,19 @@ const mains = StyleSheet.create({
     flex: 1
   },
   image: {
+    flex: 1,
     width: '100%',
-    height: '80%',
+  },
+  imageBottom: {
+    flex: 1,
+    resizeMode: 'contain'
   },
   topContainer: {
-    flex: 1, 
-    paddingBottom: 5,
+    flex: 1,
   },
   bottomContainer: {
     flex: 1,
+    paddingTop: 5,
   }
 })
 

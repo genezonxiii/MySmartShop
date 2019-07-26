@@ -73,7 +73,7 @@ class Main extends Component {
 				<View style={mains.bottomContainer}>
 		          <Image 
 		            source={{uri: uri}}
-		            style={mains.image} />
+		            style={mains.imageBottom} />
 				</View>
 				<Menu navigation={this.props.navigation} />
 			</View>
