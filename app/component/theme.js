@@ -458,6 +458,21 @@ const about = StyleSheet.create({
   youtubeBox: {
     marginBottom: 10,
   },
+  floorContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 10,
+  },
+  floorTitleBox: {
+    marginBottom: 10,
+    marginRight: 5,
+    width: '60%',
+  },
+  floorBox: {
+    marginBottom: 10,
+    marginRight: 5,
+    width: '20%',
+  },
   imageContainer: {
     marginTop: 15,
     marginBottom: 15,

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView, Platform, Linking, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
-import ComboPicker from './component/Picker'
-import GuideViewer from './component/GuideViewer'
 import { HOST_SERVER, GOOGLE_DRIVE } from './component/constants';
 
 import { about } from './component/theme'
+
+var Sound = require('react-native-sound');
 
 let db = require('./component/Model').getConnection();
 
@@ -24,6 +24,72 @@ class About extends Component {
 	    	},
 	    	youtube: [],
 	    	spot: [],
+	    	floor: [
+				{
+					text: '介紹',
+					sound: {
+						chinese: 'chinese_intro.aac',
+						japanese: 'japanese_intro.aac',
+						minnan: 'minnan_intro.aac'
+					}
+				},
+				{
+					text: '1F介紹',
+					sound: {
+						chinese: 'chinese_1f.aac',
+						japanese: 'japanese_1f.aac',
+						minnan: 'minnan_1f.aac'
+					}
+				},
+				{
+					text: '2F介紹',
+					sound: {
+						chinese: 'chinese_2f.aac',
+						japanese: 'japanese_2f.aac',
+						minnan: 'minnan_2f.aac'
+					}
+				},
+				{
+					text: '3F介紹',
+					sound: {
+						chinese: 'chinese_3f.aac',
+						japanese: 'japanese_3f.aac',
+						minnan: 'minnan_3f.aac'
+					}
+				},
+				{
+					text: '4F介紹',
+					sound: {
+						chinese: 'chinese_4f.aac',
+						japanese: 'japanese_4f.aac',
+						minnan: 'minnan_4f.aac'
+					}
+				},
+				{
+					text: '5F介紹',
+					sound: {
+						chinese: 'chinese_5f.aac',
+						japanese: 'japanese_5f.aac',
+						minnan: 'minnan_5f.aac'
+					}
+				},
+				{
+					text: '6F介紹',
+					sound: {
+						chinese: 'chinese_6f.aac',
+						japanese: 'japanese_6f.aac',
+						minnan: 'minnan_6f.aac'
+					}
+				},
+				{
+					text: '結尾',
+					sound: {
+						chinese: 'chinese_fin.aac',
+						japanese: 'japanese_fin.aac',
+						minnan: 'minnan_fin.aac'
+					}
+				}
+	    	],
 	    };
 	    this.writeDB = this.writeDB.bind(this);
 	    this.setYoutubeList = this.setYoutubeList.bind(this);
@@ -31,9 +97,17 @@ class About extends Component {
 		this.writeDBSpot = this.writeDBSpot.bind(this);
 	    this.setSpotList = this.setSpotList.bind(this);
 	    this.renderViewSpot = this.renderViewSpot.bind(this);
+	    this.stop = this.stop.bind(this);
+	    this.renderFloorIntro = this.renderFloorIntro.bind(this);
 		
 	    this.writeDB();
 	    this.writeDBSpot();
+	}
+
+	componentWillUnmount() {
+		if(this.player) {
+			this.stop();
+		}
 	}
 
 	writeDB() {
@@ -246,6 +320,93 @@ class About extends Component {
 		})
 	}
 
+	renderFloorIntro () {
+		let { floor } = this.state
+		return floor.map((data, idx)=>{
+			return (
+				<View 
+		          style={about.floorContainer} 
+		          key={idx}>
+		          <View 
+		          	style={about.floorTitleBox}>
+		          	<Text 
+		              style={about.subtitleText}>
+		          		{data.text}
+		          	</Text>
+		          </View>
+		          <View 
+		          	style={about.floorBox}>
+					  <LinearGradient 
+					  	colors={['#828282', '#494646', '#393636']}
+					  	locations={[0,0.5,1]}
+					  	style={about.linearGradient}>
+							<Text 
+				              style={about.youtube}
+				              onPress={() => {
+				              	if (!this.player) {
+				              		this.playSound(`${data.sound.chinese}`);
+				              	} else {
+				              		this.stop();
+				              	}
+				              }	
+			          		}>
+				              {'國語'}
+				            </Text>
+  						</LinearGradient>
+				  </View>
+				  <View 
+		          	style={about.floorBox}>
+  						<LinearGradient 
+					  	colors={['#828282', '#494646', '#393636']}
+					  	locations={[0,0.5,1]}
+					  	style={about.linearGradient}>
+							<Text 
+				              style={about.youtube}
+				              onPress={() => {
+				              	if (!this.player) {
+				              		this.playSound(`${data.sound.minnan}`);
+				              	} else {
+				              		this.stop();
+				              	}
+				              }	
+			          		}>
+				              {'台語'}
+				            </Text>
+  						</LinearGradient>
+  				  </View>
+	            </View>
+			)
+		})
+	}
+
+	stop(){
+		this.player.stop();
+		this.player.release();
+		delete this.player;
+	}
+
+	async playSound (filename) {
+		await this.loadSound(filename)
+		this.player.play((success) => {
+			if (!success) {
+				this.player.reset()        
+			}
+			this.player.release()
+		})
+	}
+
+	loadSound (filename) {
+		return new Promise((resolve, reject) => {
+			Sound.setCategory('Playback', true)
+			this.player = new Sound(filename, Sound.MAIN_BUNDLE, (error) => {
+				if (error) {
+					reject(error)
+				}
+				resolve()
+			})
+		})
+	}
+
 	render () {
 		let { intro, history } = this.state
 
@@ -279,9 +440,8 @@ class About extends Component {
 					<Text style={about.titleText}>
 			          1-6樓主題規畫
 			        </Text>
-		          <Image 
-		            source={require('./image/floor.png')}
-		            style={about.floor} />
+
+		          { this.renderFloorIntro() }
 				</View>
 			    <View style={about.section}>
 			    	<Text style={about.titleText}>
