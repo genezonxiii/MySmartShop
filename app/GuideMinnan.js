@@ -9,7 +9,7 @@ var Sound = require('react-native-sound');
 
 let db = require('./component/Model').getConnection();
 
-class Guide extends Component {
+class GuideMinnan extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -29,17 +29,18 @@ class Guide extends Component {
 		this.loadEntry()
 		this.loadGuide(this.state.entrypointid)
 	}
-
+	
 	componentWillUnmount() {
 		this.checkPlaying();
 	}
-	
+
 	loadEntry() {
 		db.transaction((tx) => {
-			tx.executeSql('SELECT entrypointid, entrypointdesc FROM tb_guide where language="chinese" group by entrypointid, entrypointdesc', 
+			tx.executeSql('SELECT entrypointid, entrypointdesc FROM tb_guide where language="minnan" group by entrypointid, entrypointdesc', 
 				[], (tx, results) => {
 				let { entry } = this.state;
 				var len = results.rows.length;
+				console.log(results);
 				for (let i = 0; i < len; i++) {
 					let row = results.rows.item(i);
 					let obj = {
@@ -164,4 +165,4 @@ class Guide extends Component {
 	}
 }
 
-export default Guide
+export default GuideMinnan
