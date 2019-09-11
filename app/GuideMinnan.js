@@ -15,7 +15,7 @@ class GuideMinnan extends Component {
 		this.state = {
 			entry: [],
 			guide: [],
-			entrypointid: 10,
+			entrypointid: 110,
 			viewerIndex: 0,
 			sound: '',
 		}
