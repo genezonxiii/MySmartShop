@@ -472,7 +472,7 @@ const about = StyleSheet.create({
   floorTitleBox: {
     marginBottom: 10,
     marginRight: 5,
-    width: '60%',
+    width: '40%',
   },
   floorBox: {
     marginBottom: 10,

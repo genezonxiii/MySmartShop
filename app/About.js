@@ -374,6 +374,26 @@ class About extends Component {
 				            </Text>
   						</LinearGradient>
   				  </View>
+				  <View 
+		          	style={about.floorBox}>
+  						<LinearGradient 
+					  	colors={['#828282', '#494646', '#393636']}
+					  	locations={[0,0.5,1]}
+					  	style={about.linearGradient}>
+							<Text 
+				              style={about.youtube}
+				              onPress={() => {
+				              	if (!this.player) {
+				              		this.playSound(`${data.sound.japanese}`);
+				              	} else {
+				              		this.stop();
+				              	}
+				              }	
+			          		}>
+				              {'日本語'}
+				            </Text>
+  						</LinearGradient>
+  				  </View>
 	            </View>
 			)
 		})
