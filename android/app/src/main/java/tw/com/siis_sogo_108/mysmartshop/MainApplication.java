@@ -1,4 +1,4 @@
-package tw.com.hayashi.mysmartshop;
+package tw.com.siis_sogo_108.mysmartshop;
 
 import android.app.Application;
 
@@ -18,6 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.pgsqlite.SQLitePluginPackage;
+
+import tw.com.hayashi.mysmartshop.BuildConfig;
 
 public class MainApplication extends Application implements ReactApplication {
 
