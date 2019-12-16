@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Linking } from 'react-native';
 
 import ImageButton from './ImageButton';
 import { menus } from './theme';
@@ -31,8 +31,13 @@ export default class Menu extends Component  {
         <ImageButton
           btnText='特色商品'
           btnImage='Product'
-          right='true'
           onPress={() => this.navigate('Product')}
+        />
+        <ImageButton
+          btnText='虛擬試衣間'
+          btnImage='Product'
+          right='true'
+          onPress={() => Linking.openURL('https://sbi1.cdri.org.tw/web')}
         />
       </View>
     )

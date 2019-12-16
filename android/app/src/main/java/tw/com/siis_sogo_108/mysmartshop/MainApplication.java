@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.pgsqlite.SQLitePluginPackage;
 
-import tw.com.hayashi.mysmartshop.BuildConfig;
 
 public class MainApplication extends Application implements ReactApplication {
 

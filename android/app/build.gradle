@@ -105,8 +105,8 @@ android {
         applicationId "tw.com.siis_sogo_108.mysmartshop"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 20
-        versionName "1.2.0"
+        versionCode 1
+        versionName "1.0.0"
     }
     signingConfigs {
         release {
