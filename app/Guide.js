@@ -36,7 +36,7 @@ class Guide extends Component {
 	
 	loadEntry() {
 		db.transaction((tx) => {
-			tx.executeSql('SELECT entrypointid, entrypointdesc FROM tb_guide group by entrypointid, entrypointdesc', 
+			tx.executeSql('SELECT entrypointid, entrypointdesc FROM tb_guide where language="chinese" group by entrypointid, entrypointdesc', 
 				[], (tx, results) => {
 				let { entry } = this.state;
 				var len = results.rows.length;

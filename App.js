@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Login from './app/Login';
 import Register from './app/Register';
 import Guide from './app/Guide';
+import GuideEng from './app/GuideEng';
 import Main from './app/Main';
 import Product from './app/Product';
 import Privacy from './app/Privacy';
@@ -28,6 +29,9 @@ const MainStack = StackNavigator(
     },
     Guide: {
       screen: Guide
+    },
+    GuideEng: {
+      screen: GuideEng
     },
     Product: {
       screen: Product
