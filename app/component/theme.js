@@ -200,7 +200,7 @@ const pickers = StyleSheet.create({
   },
   itemStyle: {
     height: 44,
-    fontSize: 18,
+    fontSize: 11,
   },
 })
 
