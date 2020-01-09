@@ -7,9 +7,10 @@
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
     </style>
     <style name="SpinnerItem">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">12dp</item>
     </style>
     <style name="SpinnerDropDownItem">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">12dp</item>
     </style>
+
 </resources>

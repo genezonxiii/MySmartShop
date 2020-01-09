@@ -44,7 +44,7 @@ class GuideEng extends Component {
           let row = results.rows.item(i);
           let obj = {
             value: row.entrypointid,
-            label: row.entrypointdesc,
+            label: `${ i+1 } ${ row.entrypointdesc }`,
           }
           entry.push(obj);
         }
