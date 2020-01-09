@@ -1,4 +1,4 @@
-export const HOST_SERVER = 'http://61.218.8.55/hayashi/';
+export const HOST_SERVER = 'http://61.218.8.55/smartfit/';
 export const GOOGLE_DRIVE = 'https://drive.google.com/uc?id=';
 export const DEFAULT_LINK_FOR_POSITION = 'http://shop.hayashi.com.tw/v2/official';
 
