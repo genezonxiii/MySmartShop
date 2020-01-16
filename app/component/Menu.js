@@ -19,7 +19,7 @@ export default class Menu extends Component  {
     return (
       <View style={menus.container}>
         <ImageButton
-          btnText='景點導航'
+          btnText='購物導航'
           btnImage='Guide'
           onPress={() => this.navigate('Guide')}
         />
