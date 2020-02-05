@@ -213,7 +213,7 @@ export default class LocGuide extends Component {
         finalResults: results
       })
     } if (Platform.OS === 'android') {
-      brand = results
+      brand = results.map(result=>result.replace("，","").replace("。","").replace("！","").replace("、","").replace("？",""))
       this.setState({
         finalResults: partialResults
       })
